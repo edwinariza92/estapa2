@@ -1,0 +1,13 @@
+# Archivos de bloqueo de LibreOffice
+.~lock.*
+
+# Archivos temporales
+*.swp
+*.tmp
+*.bak
+
+# Node modules (si se usa)
+.opencode/node_modules/
+
+# Archivos de bloqueo de skills
+skills-lock.json
