@@ -31,3 +31,14 @@ Para cada tema de la ruta, seguir el ciclo:
 ## Progreso
 
 - Actualizar la sección `## 📊 Progreso` y los checkboxes de la ruta cuando el estado del alumno cambie.
+
+## Finalización de sesión
+
+Al final de cada sesión de estudio (cuando el usuario indique que va a terminar o no haya más preguntas):
+
+1. **Guardar progreso**: Asegurarse de que todos los checkboxes `[x]` estén actualizados en `ruta-estadistica-inferencial.md`
+2. **Git add y commit**: Ejecutar `git add Estadistica/` y `git commit -m "avance: [describir tema estudiado]"`
+3. **Git push**: Ejecutar `git push` para sincronizar con GitHub
+4. **Confirmar**: Informar al usuario que el progreso se ha sincronizado correctamente
+
+Ejemplo de mensaje de commit: `avance: tema 4 - Probabilidad (conceptos básicos y axiomas)`
