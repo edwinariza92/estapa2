@@ -1,13 +1,14 @@
 # 📊 Ruta de Aprendizaje — Estadística Inferencial
 
-> Ruta basada en los temas del mapa conceptual (`estadistica-inferencial.png`) y el resumen completo del curso de José María Hernández Rivera (`Resumen Completo - Curso de Estadistica Inferencial.pdf`).
+> **Fuente de verdad:** Sesiones con tutor (explicaciones, ejemplos, retos) + Akousa (práctica interactiva extra).
+> **URL Akousa:** [akousa.net/es/learning-hub/data](https://akousa.net/es/learning-hub/data)
 > Marca cada casilla `[ ]` → `[x]` conforme completes cada concepto, ejercicio o evaluación.
 
 ## 🗺️ Estructura general
 
 | # | Tema | Estado |
 |---|------|--------|
-| 1 | Conjuntos | [ ] |
+| 1 | Conjuntos | [x] |
 | 2 | Funciones | [ ] |
 | 3 | Análisis combinatorio | [ ] |
 | 4 | Probabilidad | [ ] |
@@ -25,16 +26,16 @@
 
 ---
 
-## Tema 1: Conjuntos  [ ]
+## Tema 1: Conjuntos  [x]
 
 **Objetivo:** Dominar la teoría de conjuntos como base del lenguaje estadístico.
 
-- [ ] Concepto de conjunto, elementos y notación (extensión y comprensión)
-- [ ] Subconjuntos, conjunto universo y conjunto vacío
-- [ ] Operaciones: unión, intersección, diferencia, complemento
-- [ ] Leyes de De Morgan: `(A ∪ B)^c = A^c ∩ B^c` y `(A ∩ B)^c = A^c ∪ B^c`
-- [ ] Diagramas de Venn (dos y tres conjuntos)
-- [ ] Reto/evaluación: resolver operaciones combinadas y representarlas con diagramas de Venn
+- [x] Concepto de conjunto, elementos y notación (extensión y comprensión)
+- [x] Subconjuntos, conjunto universo y conjunto vacío
+- [x] Operaciones: unión, intersección, diferencia, complemento
+- [x] Leyes de De Morgan: `(A ∪ B)^c = A^c ∩ B^c` y `(A ∩ B)^c = A^c ∪ B^c`
+- [x] Diagramas de Venn (dos y tres conjuntos)
+- [x] Reto/evaluación: resolver operaciones combinadas y representarlas con diagramas de Venn
 
 ---
 
@@ -42,11 +43,11 @@
 
 **Objetivo:** Comprender el concepto de función, dominio, codominio e imágenes, esenciales para las variables aleatorias.
 
-- [ ] Definición de función como relación entre conjuntos; dominio, codominio y rango
-- [ ] Funciones inyectivas, sobreyectivas y biyectivas
-- [ ] Función inversa y composición de funciones
-- [ ] Funciones reales de variable real y su representación
-- [ ] Reto/evaluación: identificar dominio/rango e imágenes de funciones dadas y clasificarlas
+- [x] Definición de función como relación entre conjuntos; dominio, codominio y rango
+- [x] Funciones inyectivas, sobreyectivas y biyectivas
+- [x] Función inversa y composición de funciones
+- [x] Funciones reales de variable real y su representación
+- [ ] Reto/evaluación: identificar dominio/rango e imágenes de funciones dadas y clasificarlas (pendiente en próxima sesión)
 
 ---
 
@@ -232,7 +233,7 @@
 ## 📊 Progreso
 
 - [x] Definido el plan de la ruta
-- [ ] Tema 1: Conjuntos
+- [x] Tema 1: Conjuntos
 - [ ] Tema 2: Funciones
 - [ ] Tema 3: Análisis combinatorio
 - [ ] Tema 4: Probabilidad
