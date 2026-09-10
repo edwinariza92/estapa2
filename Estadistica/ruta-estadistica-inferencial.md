@@ -9,7 +9,7 @@
 | # | Tema | Estado |
 |---|------|--------|
 | 1 | Conjuntos | [x] |
-| 2 | Funciones | [ ] |
+| 2 | Funciones | [x] |
 | 3 | Análisis combinatorio | [x] |
 | 4 | Probabilidad | [ ] |
 | 5 | Variables aleatorias | [ ] |
@@ -39,7 +39,7 @@
 
 ---
 
-## Tema 2: Funciones  [ ]
+## Tema 2: Funciones  [x]
 
 **Objetivo:** Comprender el concepto de función, dominio, codominio e imágenes, esenciales para las variables aleatorias.
 
@@ -47,7 +47,7 @@
 - [x] Funciones inyectivas, sobreyectivas y biyectivas
 - [x] Función inversa y composición de funciones
 - [x] Funciones reales de variable real y su representación
-- [ ] Reto/evaluación: identificar dominio/rango e imágenes de funciones dadas y clasificarlas (pendiente en próxima sesión)
+- [x] Reto/evaluación: identificar dominio/rango e imágenes de funciones dadas y clasificarlas
 
 ---
 
@@ -67,15 +67,15 @@
 
 **Objetivo:** Comprender la teoría de probabilidad: espacio muestral, eventos, regla de Laplace, axiomas y teoremas.
 
-- [ ] Experimento aleatorio, espacio muestral (Ω) y eventos (A ⊆ Ω)
-- [ ] Tipos de eventos: simple, compuesto, mutuamente excluyentes
-- [ ] Regla de Laplace: `P(A) = casos favorables / casos posibles`
-- [ ] Axiomas de Kolmogorov
-- [ ] Teoremas: `P(A^c) = 1 − P(A)`, `P(∅) = 0`, monotonía
-- [ ] Regla general de adición: `P(A ∪ B) = P(A) + P(B) − P(A ∩ B)`
-- [ ] Probabilidad condicional: `P(A|B) = P(A ∩ B) / P(B)`
-- [ ] Regla de multiplicación e independencia de eventos
-- [ ] Teorema de la probabilidad total y Teorema de Bayes
+- [x] Experimento aleatorio, espacio muestral (Ω) y eventos (A ⊆ Ω)
+- [x] Tipos de eventos: simple, compuesto, mutuamente excluyentes
+- [x] Regla de Laplace: `P(A) = casos favorables / casos posibles`
+- [x] Axiomas de Kolmogorov
+- [x] Teoremas: `P(A^c) = 1 − P(A)`, `P(∅) = 0`, monotonía
+- [x] Regla general de adición: `P(A ∪ B) = P(A) + P(B) − P(A ∩ B)`
+- [x] Probabilidad condicional: `P(A|B) = P(A ∩ B) / P(B)`
+- [x] Regla de multiplicación e independencia de eventos
+- [x] Teorema de la probabilidad total y Teorema de Bayes
 - [ ] Reto/evaluación: aplicar Laplace, adición y Bayes a problemas contextualizados
 
 ---
@@ -234,7 +234,7 @@
 
 - [x] Definido el plan de la ruta
 - [x] Tema 1: Conjuntos
-- [ ] Tema 2: Funciones
+- [x] Tema 2: Funciones
 - [x] Tema 3: Análisis combinatorio
 - [ ] Tema 4: Probabilidad
 - [ ] Tema 5: Variables aleatorias

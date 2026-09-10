@@ -67,7 +67,7 @@ $$|A \cup B \cup C| = |A| + |B| + |C| - |A \cap B| - |A \cap C| - |B \cap C| + |
 
 ---
 
-## Tema 2: Funciones 🔶
+## Tema 2: Funciones ✅
 
 ### Conceptos clave
 
@@ -199,9 +199,137 @@ $$C(8, 3) = \frac{8!}{3! \times 5!} = \frac{40320}{6 \times 120} = 56$$
 
 ---
 
-## Tema 4: Probabilidad ⬜
+## Tema 4: Probabilidad 🔶
 
-*Por agregar...*
+### Conceptos fundamentales
+
+#### Experimento aleatorio
+
+Experimento cuyo resultado no se puede predecir con certeza.
+
+**Ejemplos:** Lanzar un dado, lanzar una moneda, extraer una carta.
+
+---
+
+#### Espacio muestral (Ω)
+
+Conjunto de todos los resultados posibles.
+
+```
+Dado: Ω = {1, 2, 3, 4, 5, 6}
+Moneda: Ω = {Cara, Cruz}
+Dos monedas: Ω = {(C,C), (C,V), (V,C), (V,V)}
+```
+
+---
+
+#### Eventos
+
+Subconjunto del espacio muestral (A ⊆ Ω).
+
+| Tipo | Definición | Ejemplo (dado) |
+|------|------------|----------------|
+| **Simple** | Un solo resultado | {3} |
+| **Compuesto** | Varios resultados | {2, 4, 6} |
+| **Mutuamente excluyentes** | No pueden ocurrir al mismo tiempo | {1, 2} y {3, 4} |
+| **Complemento** | Todos los resultados que NO están en A | Si A = {2, 4, 6}, Aᶜ = {1, 3, 5} |
+
+---
+
+### Regla de Laplace
+
+$$P(A) = \frac{\text{casos favorables}}{\text{casos posibles}} = \frac{|A|}{|\Omega|}$$
+
+**Ejemplo:** Dado justo, número par: P(A) = 3/6 = 1/2
+
+**Propiedades:**
+- $0 \leq P(A) \leq 1$
+- $P(\Omega) = 1$ (evento seguro)
+- $P(\emptyset) = 0$ (evento imposible)
+
+---
+
+### Axiomas de Kolmogorov
+
+| Axioma | Fórmula | Significado |
+|--------|---------|-------------|
+| **1. No negatividad** | $P(A) \geq 0$ | La probabilidad nunca es negativa |
+| **2. P(Ω) = 1** | $P(\Omega) = 1$ | El seguro de que algo pase es 1 |
+| **3. Aditividad** | Si $A \cap B = \emptyset$: $P(A \cup B) = P(A) + P(B)$ | Mutuamente excluyentes se suman |
+
+**Teoremas derivados:**
+- $P(A^c) = 1 - P(A)$
+- $P(\emptyset) = 0$
+- Si $A \subseteq B$, entonces $P(A) \leq P(B)$
+
+---
+
+### Regla general de adición
+
+$$P(A \cup B) = P(A) + P(B) - P(A \cap B)$$
+
+**Si mutuamente excluyentes (A ∩ B = ∅):**
+
+$$P(A \cup B) = P(A) + P(B)$$
+
+---
+
+### Probabilidad condicional
+
+$$P(A|B) = \frac{P(A \cap B)}{P(B)}$$
+
+**Interpretación:** "Si solo consideramos los casos donde B es cierto, ¿cuál es la probabilidad de A?"
+
+**Ejemplo:** Dado, pares dado que menor que 4: P(A|B) = (1/6) / (1/2) = 1/3
+
+---
+
+### Regla de multiplicación
+
+$$P(A \cap B) = P(A|B) \times P(B)$$
+
+---
+
+### Independencia
+
+Dos eventos son **independientes** si:
+
+$$P(A \cap B) = P(A) \times P(B)$$
+
+O equivalentemente: $P(A|B) = P(A)$
+
+---
+
+### Teorema de la probabilidad total
+
+Si B₁, B₂, ..., Bₙ es una partición de Ω:
+
+$$P(A) = \sum P(A|B_i) \times P(B_i)$$
+
+---
+
+### Teorema de Bayes
+
+$$P(B_j|A) = \frac{P(A|B_j) \times P(B_j)}{P(A)}$$
+
+Donde $P(A) = \sum P(A|B_i) \times P(B_i)$
+
+**Ejemplo clásico:** Prueba médica con falsos positivos.
+
+---
+
+### Resumen del Tema 4
+
+| Concepto | Fórmula |
+|----------|---------|
+| Laplace | $P(A) = \|A\| / \|\Omega\|$ |
+| Complemento | $P(A^c) = 1 - P(A)$ |
+| Adición | $P(A \cup B) = P(A) + P(B) - P(A \cap B)$ |
+| Condicional | $P(A|B) = P(A \cap B) / P(B)$ |
+| Multiplicación | $P(A \cap B) = P(A|B) \times P(B)$ |
+| Independencia | $P(A \cap B) = P(A) \times P(B)$ |
+| Probabilidad total | $P(A) = \sum P(A|B_i) \times P(B_i)$ |
+| Bayes | $P(B_j|A) = P(A|B_j) \times P(B_j) / P(A)$ |
 
 ---
 
@@ -277,6 +405,7 @@ $$C(8, 3) = \frac{8!}{3! \times 5!} = \frac{40320}{6 \times 120} = 56$$
 |-------|----------------|--------|
 | 2026-09-10 | Tema 1 (Completado), Tema 2 (En progreso) | Conceptos de funciones, reto pendiente |
 | 2026-09-10 | Tema 3 (Completado) | Principios de conteo, factorial, permutaciones, combinaciones |
+| 2026-09-10 | Tema 2 (Completado), Tema 4 (Conceptos vistos) | Reto de funciones completado, conceptos de probabilidad (reto pendiente) |
 
 ---
 
