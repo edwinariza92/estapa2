@@ -10,7 +10,7 @@
 |---|------|--------|
 | 1 | Conjuntos | [x] |
 | 2 | Funciones | [ ] |
-| 3 | Análisis combinatorio | [ ] |
+| 3 | Análisis combinatorio | [x] |
 | 4 | Probabilidad | [ ] |
 | 5 | Variables aleatorias | [ ] |
 | 6 | Distribuciones de probabilidad | [ ] |
@@ -51,15 +51,15 @@
 
 ---
 
-## Tema 3: Análisis combinatorio  [ ]
+## Tema 3: Análisis combinatorio  [x]
 
 **Objetivo:** Aplicar los principios de conteo y las técnicas de permutaciones y combinaciones.
 
-- [ ] Principio multiplicativo y principio aditivo
-- [ ] Factorial, producto cartesiano (`|A × B| = n × m`)
-- [ ] Permutaciones: `P(n, r) = n! / (n - r)!`
-- [ ] Combinaciones: `C(n, r) = n! / (r! · (n - r)!)`
-- [ ] Reto/evaluación: resolver problemas de conteo mixtos (permutaciones y combinaciones)
+- [x] Principio multiplicativo y principio aditivo
+- [x] Factorial, producto cartesiano (`|A × B| = n × m`)
+- [x] Permutaciones: `P(n, r) = n! / (n - r)!`
+- [x] Combinaciones: `C(n, r) = n! / (r! · (n - r)!)`
+- [x] Reto/evaluación: resolver problemas de conteo mixtos (permutaciones y combinaciones)
 
 ---
 
@@ -235,7 +235,7 @@
 - [x] Definido el plan de la ruta
 - [x] Tema 1: Conjuntos
 - [ ] Tema 2: Funciones
-- [ ] Tema 3: Análisis combinatorio
+- [x] Tema 3: Análisis combinatorio
 - [ ] Tema 4: Probabilidad
 - [ ] Tema 5: Variables aleatorias
 - [ ] Tema 6: Distribuciones de probabilidad
