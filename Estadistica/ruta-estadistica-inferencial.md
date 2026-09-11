@@ -98,20 +98,20 @@
 **Objetivo:** Conocer las principales distribuciones discretas y continuas, su esperanza y varianza.
 
 **Discretas**
-- [ ] Distribución de Bernoulli (éxito `p`, fracaso `q = 1 − p`)
-- [ ] Distribución binomial: `X ~ Bin(n, p)`; `E[X] = np`, `Var(X) = np(1 − p)`
-- [ ] Distribución de Poisson: `f(x) = e^(−λ) λ^x / x!`; `E[X] = Var(X) = λ`
-- [ ] Distribución geométrica: `f(x) = (1 − p)^(x−1) p`; propiedad de falta de memoria
+- [x] Distribución de Bernoulli (éxito `p`, fracaso `q = 1 − p`)
+- [x] Distribución binomial: `X ~ Bin(n, p)`; `E[X] = np`, `Var(X) = np(1 − p)`
+- [x] Distribución de Poisson: `f(x) = e^(−λ) λ^x / x!`; `E[X] = Var(X) = λ`
+- [x] Distribución geométrica: `f(x) = (1 − p)^(x−1) p`; propiedad de falta de memoria
 
 **Continuas**
-- [ ] Distribución uniforme continua: `U(a, b)`; `f(x) = 1/(b−a)`
-- [ ] Distribución exponencial: `f(x) = λ e^(−λx)`; `E[X] = 1/λ`, `Var(X) = 1/λ²`
-- [ ] Distribución normal: `N(μ, σ)` y estandarización `Z = (X − μ)/σ ~ N(0,1)`
-- [ ] Aproximación normal a la binomial (con corrección por continuidad)
+- [x] Distribución uniforme continua: `U(a, b)`; `f(x) = 1/(b−a)`
+- [x] Distribución exponencial: `f(x) = λ e^(−λx)`; `E[X] = 1/λ`, `Var(X) = 1/λ²`
+- [x] Distribución normal: `N(μ, σ)` y estandarización `Z = (X − μ)/σ ~ N(0,1)`
+- [x] Aproximación normal a la binomial (con corrección por continuidad)
 
 **Medidas**
-- [ ] Esperanza matemática: `E[X] = Σ xᵢ f(xᵢ)`
-- [ ] Varianza y desviación estándar: `Var(X) = E[X²] − (E[X])²`
+- [x] Esperanza matemática: `E[X] = Σ xᵢ f(xᵢ)`
+- [x] Varianza y desviación estándar: `Var(X) = E[X²] − (E[X])²`
 - [ ] Reto/evaluación: identificar la distribución adecuada para un problema y calcular esperanza y varianza
 
 ---
