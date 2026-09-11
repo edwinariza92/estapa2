@@ -11,7 +11,7 @@
 | 1 | Conjuntos | [x] |
 | 2 | Funciones | [x] |
 | 3 | Análisis combinatorio | [x] |
-| 4 | Probabilidad | [ ] |
+| 4 | Probabilidad | [x] |
 | 5 | Variables aleatorias | [ ] |
 | 6 | Distribuciones de probabilidad | [ ] |
 | 7 | Distribuciones muestrales | [ ] |
@@ -76,7 +76,7 @@
 - [x] Probabilidad condicional: `P(A|B) = P(A ∩ B) / P(B)`
 - [x] Regla de multiplicación e independencia de eventos
 - [x] Teorema de la probabilidad total y Teorema de Bayes
-- [ ] Reto/evaluación: aplicar Laplace, adición y Bayes a problemas contextualizados
+- [x] Reto/evaluación: aplicar Laplace, adición y Bayes a problemas contextualizados
 
 ---
 
@@ -236,7 +236,7 @@
 - [x] Tema 1: Conjuntos
 - [x] Tema 2: Funciones
 - [x] Tema 3: Análisis combinatorio
-- [ ] Tema 4: Probabilidad
+- [x] Tema 4: Probabilidad
 - [ ] Tema 5: Variables aleatorias
 - [ ] Tema 6: Distribuciones de probabilidad
 - [ ] Tema 7: Distribuciones muestrales
