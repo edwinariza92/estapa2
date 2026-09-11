@@ -12,7 +12,7 @@
 | 2 | Funciones | [x] |
 | 3 | Análisis combinatorio | [x] |
 | 4 | Probabilidad | [x] |
-| 5 | Variables aleatorias | [ ] |
+| 5 | Variables aleatorias | [x] |
 | 6 | Distribuciones de probabilidad | [ ] |
 | 7 | Distribuciones muestrales | [ ] |
 | 8 | Ley de los números grandes y TLC | [ ] |
@@ -84,12 +84,12 @@
 
 **Objetivo:** Entender las variables aleatorias discretas y continuas y sus funciones de probabilidad.
 
-- [ ] Variable aleatoria: `X: Ω → ℝ`
-- [ ] Variables aleatorias discretas y continuas
-- [ ] Función de masa de probabilidad (FMP): `f(x) = P(X = x)`, con `Σ f(x) = 1`
-- [ ] Función de densidad de probabilidad (FDP) y área bajo la curva
-- [ ] Función de distribución acumulada (FDA): `F(x) = P(X ≤ x)`
-- [ ] Reto/evaluación: dada una FMP/FDA, calcular probabilidades y verificar propiedades
+- [x] Variable aleatoria: `X: Ω → ℝ`
+- [x] Variables aleatorias discretas y continuas
+- [x] Función de masa de probabilidad (FMP): `f(x) = P(X = x)`, con `Σ f(x) = 1`
+- [x] Función de densidad de probabilidad (FDP) y área bajo la curva
+- [x] Función de distribución acumulada (FDA): `F(x) = P(X ≤ x)`
+- [x] Reto/evaluación: dada una FMP/FDA, calcular probabilidades y verificar propiedades
 
 ---
 
@@ -237,7 +237,7 @@
 - [x] Tema 2: Funciones
 - [x] Tema 3: Análisis combinatorio
 - [x] Tema 4: Probabilidad
-- [ ] Tema 5: Variables aleatorias
+- [x] Tema 5: Variables aleatorias
 - [ ] Tema 6: Distribuciones de probabilidad
 - [ ] Tema 7: Distribuciones muestrales
 - [ ] Tema 8: Ley de los números grandes y TLC
