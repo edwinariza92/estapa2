@@ -98,10 +98,10 @@
 **Objetivo:** Conocer las principales distribuciones discretas y continuas, su esperanza y varianza.
 
 **Discretas**
-- [ ] Distribución de Bernoulli (éxito `p`, fracaso `q = 1 − p`)
-- [ ] Distribución binomial: `X ~ Bin(n, p)`; `E[X] = np`, `Var(X) = np(1 − p)`
-- [ ] Distribución de Poisson: `f(x) = e^(−λ) λ^x / x!`; `E[X] = Var(X) = λ`
-- [ ] Distribución geométrica: `f(x) = (1 − p)^(x−1) p`; propiedad de falta de memoria
+- [x] Distribución de Bernoulli (éxito `p`, fracaso `q = 1 − p`)
+- [x] Distribución binomial: `X ~ Bin(n, p)`; `E[X] = np`, `Var(X) = np(1 − p)`
+- [x] Distribución de Poisson: `f(x) = e^(−λ) λ^x / x!`; `E[X] = Var(X) = λ`
+- [x] Distribución geométrica: `f(x) = (1 − p)^(x−1) p`; propiedad de falta de memoria
 
 **Continuas**
 - [ ] Distribución uniforme continua: `U(a, b)`; `f(x) = 1/(b−a)`
