@@ -13,7 +13,7 @@
 | 3 | Análisis combinatorio | [x] |
 | 4 | Probabilidad | [x] |
 | 5 | Variables aleatorias | [x] |
-| 6 | Distribuciones de probabilidad | [ ] |
+| 6 | Distribuciones de probabilidad | [x] |
 | 7 | Distribuciones muestrales | [ ] |
 | 8 | Ley de los números grandes y TLC | [ ] |
 | 9 | Muestreo | [ ] |
@@ -93,7 +93,7 @@
 
 ---
 
-## Tema 6: Distribuciones de probabilidad  [ ]
+## Tema 6: Distribuciones de probabilidad  [x]
 
 **Objetivo:** Conocer las principales distribuciones discretas y continuas, su esperanza y varianza.
 
@@ -104,15 +104,15 @@
 - [x] Distribución geométrica: `f(x) = (1 − p)^(x−1) p`; propiedad de falta de memoria
 
 **Continuas**
-- [ ] Distribución uniforme continua: `U(a, b)`; `f(x) = 1/(b−a)`
-- [ ] Distribución exponencial: `f(x) = λ e^(−λx)`; `E[X] = 1/λ`, `Var(X) = 1/λ²`
-- [ ] Distribución normal: `N(μ, σ)` y estandarización `Z = (X − μ)/σ ~ N(0,1)`
-- [ ] Aproximación normal a la binomial (con corrección por continuidad)
+- [x] Distribución uniforme continua: `U(a, b)`; `f(x) = 1/(b−a)`
+- [x] Distribución exponencial: `f(x) = λ e^(−λx)`; `E[X] = 1/λ`, `Var(X) = 1/λ²`
+- [x] Distribución normal: `N(μ, σ)` y estandarización `Z = (X − μ)/σ ~ N(0,1)`
+- [x] Aproximación normal a la binomial (con corrección por continuidad)
 
 **Medidas**
-- [ ] Esperanza matemática: `E[X] = Σ xᵢ f(xᵢ)`
-- [ ] Varianza y desviación estándar: `Var(X) = E[X²] − (E[X])²`
-- [ ] Reto/evaluación: identificar la distribución adecuada para un problema y calcular esperanza y varianza
+- [x] Esperanza matemática: `E[X] = Σ xᵢ f(xᵢ)`
+- [x] Varianza y desviación estándar: `Var(X) = E[X²] − (E[X])²`
+- [x] Reto/evaluación: identificar la distribución adecuada para un problema y calcular esperanza y varianza
 
 ---
 
@@ -238,7 +238,7 @@
 - [x] Tema 3: Análisis combinatorio
 - [x] Tema 4: Probabilidad
 - [x] Tema 5: Variables aleatorias
-- [ ] Tema 6: Distribuciones de probabilidad
+- [x] Tema 6: Distribuciones de probabilidad
 - [ ] Tema 7: Distribuciones muestrales
 - [ ] Tema 8: Ley de los números grandes y TLC
 - [ ] Tema 9: Muestreo
