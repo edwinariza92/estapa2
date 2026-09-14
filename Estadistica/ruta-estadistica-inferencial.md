@@ -22,7 +22,7 @@
 | 12 | Pruebas no paramétricas | [ ] |
 | 13 | Distribución Chi-cuadrado | [ ] |
 | 14 | Método de mínimos cuadrados | [ ] |
-| 15 | Teorema de Bayes | [ ] |
+| 15 | Teorema de Bayes | [x] |
 
 ---
 
@@ -217,16 +217,16 @@
 
 ---
 
-## Tema 15: Teorema de Bayes  [ ]
+## Tema 15: Teorema de Bayes  [x]
 
 **Objetivo:** Dominar el Teorema de Bayes y su aplicación para actualizar probabilidades a partir de nueva evidencia.
 
-- [ ] Fórmula de Bayes: `P(Bⱼ|A) = P(Bⱼ) · P(A|Bⱼ) / Σ P(Bᵢ) · P(A|Bᵢ)`
-- [ ] Probabilidad a priori vs. a posteriori: cómo la evidencia actualiza la creencia inicial
-- [ ] Probabilidad total como denominador: `P(A) = Σ P(Bᵢ) · P(A|Bᵢ)`
-- [ ] Ejemplo clásico: prueba médica con falsos positivos/negativos
-- [ ] Aplicación práctica: clasificación, diagnóstico, filtros de spam
-- [ ] Reto/evaluación: resolver un problema de Bayes completo (prior → evidencia → posterior) e interpretar el resultado en contexto
+- [x] Fórmula de Bayes: `P(Bⱼ|A) = P(Bⱼ) · P(A|Bⱼ) / Σ P(Bᵢ) · P(A|Bᵢ)`
+- [x] Probabilidad a priori vs. a posteriori: cómo la evidencia actualiza la creencia inicial
+- [x] Probabilidad total como denominador: `P(A) = Σ P(Bᵢ) · P(A|Bᵢ)`
+- [x] Ejemplo clásico: prueba médica con falsos positivos/negativos
+- [x] Aplicación práctica: clasificación, diagnóstico, filtros de spam
+- [x] Reto/evaluación: resolver un problema de Bayes completo (prior → evidencia → posterior) e interpretar el resultado en contexto
 
 ---
 
@@ -247,7 +247,7 @@
 - [ ] Tema 12: Pruebas no paramétricas
 - [ ] Tema 13: Distribución Chi-cuadrado
 - [ ] Tema 14: Método de mínimos cuadrados
-- [ ] Tema 15: Teorema de Bayes
+- [x] Tema 15: Teorema de Bayes
 
 ---
 
