@@ -17,7 +17,7 @@
 | 7 | Distribuciones muestrales | [x] |
 | 8 | Ley de los números grandes y TLC | [x] |
 | 9 | Muestreo | [x] |
-| 10 | Hipótesis, significancia, valor p, potencia, errores | [ ] |
+| 10 | Hipótesis, significancia, valor p, potencia, errores | [x] |
 | 11 | Pruebas paramétricas | [ ] |
 | 12 | Pruebas no paramétricas | [ ] |
 | 13 | Distribución Chi-cuadrado | [ ] |
@@ -151,15 +151,15 @@
 
 ---
 
-## Tema 10: Hipótesis, significancia, valor p, potencia y tipos de error  [ ]
+## Tema 10: Hipótesis, significancia, valor p, potencia y tipos de error  [x]
 
 **Objetivo:** Dominar la lógica de las pruebas de hipótesis y la interpretación de errores y significancia.
 
-- [ ] Hipótesis nula (`H₀`) e hipótesis alternativa (`H₁`)
-- [ ] Nivel de significancia (α) y nivel de confianza
-- [ ] Tipos de error: Error Tipo I (α) y Error Tipo II (β); potencia `1 − β`
-- [ ] Criterio del valor p: rechazar `H₀` si `p ≤ α`
-- [ ] Reto/evaluación: plantear `H₀`/`H₁`, identificar tipos de error y decidir con el valor p para un caso
+- [x] Hipótesis nula (`H₀`) e hipótesis alternativa (`H₁`)
+- [x] Nivel de significancia (α) y nivel de confianza
+- [x] Tipos de error: Error Tipo I (α) y Error Tipo II (β); potencia `1 − β`
+- [x] Criterio del valor p: rechazar `H₀` si `p ≤ α`
+- [x] Reto/evaluación: plantear `H₀`/`H₁`, identificar tipos de error y decidir con el valor p para un caso
 
 ---
 
@@ -242,7 +242,7 @@
 - [x] Tema 7: Distribuciones muestrales
 - [x] Tema 8: Ley de los números grandes y TLC
 - [x] Tema 9: Muestreo
-- [ ] Tema 10: Hipótesis, significancia, valor p, potencia, errores
+- [x] Tema 10: Hipótesis, significancia, valor p, potencia, errores
 - [ ] Tema 11: Pruebas paramétricas
 - [ ] Tema 12: Pruebas no paramétricas
 - [ ] Tema 13: Distribución Chi-cuadrado

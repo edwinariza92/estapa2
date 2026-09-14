@@ -682,9 +682,102 @@ Es la **diferencia** entre el valor del estadístico muestral y el valor real de
 
 ---
 
-## Tema 10: Hipótesis, significancia, valor p, potencia y errores ⬜
+## Tema 10: Hipótesis, significancia, valor p, potencia y errores ✅
 
-*Por agregar...*
+### Hipótesis nula (H₀) e hipótesis alternativa (H₁)
+
+Las pruebas de hipótesis son como un "juicio" estadístico:
+
+- **H₀ (hipótesis nula):** Lo que asumimos como verdadero hasta tener evidencia en contra. **Siempre incluye igualdad** (=, ≤, ≥).
+- **H₁ (hipótesis alternativa):** Lo que queremos probar. Es lo contrario de H₀.
+
+**Regla:** Si la afirmación original incluye igualdad (≥, ≤, =) → va en H₀. Si no incluye (<, >, ≠) → va en H₁.
+
+---
+
+### Tipos de prueba
+
+| Tipo | H₁ | Cola | Ejemplo |
+|------|-----|------|---------|
+| **Bilateral** | μ ≠ valor | Ambas colas | "¿El promedio CAMBIÓ?" |
+| **Cola izquierda** | μ < valor | Izquierda | "¿El promedio es MENOR?" |
+| **Cola derecha** | μ > valor | Derecha | "¿El promedio es MAYOR?" |
+
+**Ejemplo:** Tablets con batería de "al menos 10 horas":
+- H₀: μ ≥ 10
+- H₁: μ < 10
+- Tipo: cola izquierda
+
+**Ejemplo:** Hospital con tasa de infección del 5%:
+- H₀: μ = 5% (o μ ≤ 5%)
+- H₁: μ > 5%
+- Tipo: cola derecha
+
+---
+
+### Nivel de significancia (α)
+
+Es la probabilidad de **rechazar H₀ cuando en realidad es verdadera** (Error Tipo I).
+
+| α | Nivel de confianza | Interpretación |
+|----|-------------------|----------------|
+| 0.10 | 90% | 10% de riesgo |
+| 0.05 | 95% | 5% de riesgo (más común) |
+| 0.01 | 99% | 1% de riesgo |
+
+---
+
+### Tipos de error
+
+| Error | Qué ocurre | Probabilidad |
+|-------|------------|--------------|
+| **Tipo I** | Rechazas H₀ siendo verdadera | α |
+| **Tipo II** | No rechazas H₀ siendo falsa | β |
+
+| Decisión | H₀ es verdadera | H₀ es falsa |
+|----------|-----------------|-------------|
+| **Rechazar H₀** | Error Tipo I (α) | ✅ Correcto |
+| **No rechazar H₀** | ✅ Correcto | Error Tipo II (β) |
+
+---
+
+### Potencia
+
+**Potencia = 1 − β**
+
+Es la probabilidad de **rechazar H₀ correctamente** cuando H₀ es falsa.
+
+**Cómo aumentar la potencia:**
+- Aumentar n (tamaño de muestra)
+- Aumentar α (pero aumenta riesgo de Error Tipo I)
+- Reducir la variabilidad (σ)
+
+**Ejemplo:** Si potencia = 0.90, entonces β = 0.10. Tienes 90% de probabilidad de detectar el efecto si existe.
+
+---
+
+### Valor p
+
+Es la probabilidad de obtener un resultado igual o más extremo que el observado, **asumiendo que H₀ es verdadera**.
+
+**Regla de decisión:**
+- Si **p ≤ α** → Rechazas H₀ (resultado significativo)
+- Si **p > α** → No rechazas H₀ (no hay evidencia suficiente)
+
+**Ejemplo:** p = 0.03, α = 0.05 → 0.03 ≤ 0.05 → Rechazas H₀
+
+---
+
+### Resumen
+
+| Concepto | Definición | Regla |
+|----------|------------|-------|
+| H₀ | Hipótesis nula | Incluye igualdad |
+| H₁ | Hipótesis alternativa | Contrario de H₀ |
+| α | Nivel de significancia | P(Error Tipo I) |
+| β | Error Tipo II | P(No rechazar H₀ siendo falsa) |
+| Potencia | Detectar efecto real | 1 − β |
+| Valor p | P(result extremo \| H₀ verdadera) | Rechazar si p ≤ α |
 
 ---
 
@@ -781,6 +874,7 @@ Tres máquinas: M1 50% (6% defectuosas), M2 30% (3% defectuosas), M3 20% (4% def
 | 2026-09-14 | Tema 7 (Completado) | Distribuciones muestrales: media, proporción, t de Student, Chi-cuadrado y F; reto superado (6/7) |
 | 2026-09-14 | Tema 8 (Completado) | LNN y TLC: convergencia, distribución aproximada normal, ejemplos con tabla Z; reto superado (8/9) |
 | 2026-09-14 | Tema 9 (Completado) | Muestreo: tipos (aleatorio, estratificado, conglomerados, sistemático), sesgo y error; reto superado (9/9) |
+| 2026-09-14 | Tema 10 (Completado) | Hipótesis: H₀/H₁, tipos de prueba (cola izq, der, bilateral), α, β, potencia, valor p; reto superado (6/9) |
 
 ---
 
