@@ -15,7 +15,7 @@
 | 5 | Variables aleatorias | [x] |
 | 6 | Distribuciones de probabilidad | [x] |
 | 7 | Distribuciones muestrales | [x] |
-| 8 | Ley de los números grandes y TLC | [ ] |
+| 8 | Ley de los números grandes y TLC | [x] |
 | 9 | Muestreo | [ ] |
 | 10 | Hipótesis, significancia, valor p, potencia, errores | [ ] |
 | 11 | Pruebas paramétricas | [ ] |
@@ -128,14 +128,14 @@
 
 ---
 
-## Tema 8: Ley de los números grandes y TLC  [ ]
+## Tema 8: Ley de los números grandes y TLC  [x]
 
 **Objetivo:** Entender la ley de los números grandes y el Teorema del Límite Central como fundamento de la inferencia.
 
-- [ ] Ley de los números grandes (convergencia de la media muestral a la esperanza)
-- [ ] Teorema del Límite Central (TLC): para muestras grandes (`n ≥ 30`) la media muestral se aproxima a una normal
-- [ ] Condiciones de aplicación y supuestos del TLC
-- [ ] Reto/evaluación: explicar cuándo y por qué aplica el TLC en un caso real
+- [x] Ley de los números grandes (convergencia de la media muestral a la esperanza)
+- [x] Teorema del Límite Central (TLC): para muestras grandes (`n ≥ 30`) la media muestral se aproxima a una normal
+- [x] Condiciones de aplicación y supuestos del TLC
+- [x] Reto/evaluación: explicar cuándo y por qué aplica el TLC en un caso real
 
 ---
 
@@ -240,7 +240,7 @@
 - [x] Tema 5: Variables aleatorias
 - [x] Tema 6: Distribuciones de probabilidad
 - [x] Tema 7: Distribuciones muestrales
-- [ ] Tema 8: Ley de los números grandes y TLC
+- [x] Tema 8: Ley de los números grandes y TLC
 - [ ] Tema 9: Muestreo
 - [ ] Tema 10: Hipótesis, significancia, valor p, potencia, errores
 - [ ] Tema 11: Pruebas paramétricas

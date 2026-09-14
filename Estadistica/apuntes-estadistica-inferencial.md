@@ -526,9 +526,71 @@ Una **distribución muestral** es la distribución de probabilidad de un estadí
 
 ---
 
-## Tema 8: Ley de los números grandes y TLC ⬜
+## Tema 8: Ley de los números grandes y TLC ✅
 
-*Por agregar...*
+### Ley de los números grandes (LNN)
+
+**Enunciado:** Cuando el tamaño de muestra n tiende a infinito, la media muestral X̄ converge a la media poblacional μ.
+
+**Interpretación:** A mayor número de ensayos, más preciso es el estimador.
+
+**Propiedades:**
+- `E[X̄] = μ` (insesgado)
+- `σ_X̄ = σ/√n` (disminuye cuando n crece)
+
+**Ejemplo:** Si μ = 70 kg:
+- n = 10 → X̄ = 72 kg
+- n = 100 → X̄ = 69 kg
+- n = 1000 → X̄ = 70.2 kg
+
+---
+
+### Teorema del Límite Central (TLC)
+
+**Enunciado:** Si n ≥ 30, la distribución de las medias muestrales se aproxima a una normal, sin importar la distribución de la población original.
+
+**Fórmula:**
+`X̄ ~ N(μ, σ/√n)` (aproximadamente, cuando n ≥ 30)
+
+**Condiciones de aplicación:**
+1. Independencia de las observaciones (muestra aleatoria simple)
+2. n ≥ 30 (regla general)
+   - Si la población es normal, n puede ser menor
+   - Si la población es muy asimétrica, se necesita n más grande
+
+| Población | n necesario | Resultado |
+|-----------|-------------|-----------|
+| Normal | Cualquier n | X̄ es normal |
+| No normal | n ≥ 30 | X̄ es **aproximadamente** normal |
+
+---
+
+### Ejemplo completo
+
+**Problema:** Los ingresos mensuales tienen distribución asimétrica con μ = 1500 y σ = 300. Se toma una muestra de n = 50.
+
+**a) ¿Se aplica el TLC?**
+Sí, porque n = 50 ≥ 30.
+
+**b) ¿Qué distribución sigue X̄?**
+`X̄ ~ N(1500, 300/√50) ≈ N(1500, 42.43)`
+
+**c) Calcular P(X̄ > 1550):**
+1. `Z = (1550 − 1500) / 42.43 = 50 / 42.43 ≈ 1.18`
+2. Buscar en tabla Z: P(Z < 1.18) = 0.8810
+3. `P(X̄ > 1550) = 1 − 0.8810 = 0.1190`
+
+**Resultado:** ~11.9% de probabilidad.
+
+---
+
+### Diferencia entre LNN y TLC
+
+| Ley de los números grandes | Teorema del Límite Central |
+|---------------------------|---------------------------|
+| X̄ converge a μ cuando n → ∞ | X̄ sigue distribución normal cuando n ≥ 30 |
+| Habla de **convergencia** | Habla de **distribución** |
+| Se cumple con muchos ensayos | Se cumple cuando n ≥ 30 |
 
 ---
 
@@ -635,6 +697,7 @@ Tres máquinas: M1 50% (6% defectuosas), M2 30% (3% defectuosas), M3 20% (4% def
 | 2026-09-10 | Tema 2 (Completado), Tema 4 (Conceptos vistos) | Reto de funciones completado, conceptos de probabilidad (reto pendiente) |
 | 2026-09-13 | Tema 6 (Completado), Tema 15 (Bayes, repaso) | Reto de distribuciones superado; apuntes migrados a Unicode; repaso de Bayes con ejercicio |
 | 2026-09-14 | Tema 7 (Completado) | Distribuciones muestrales: media, proporción, t de Student, Chi-cuadrado y F; reto superado (6/7) |
+| 2026-09-14 | Tema 8 (Completado) | LNN y TLC: convergencia, distribución aproximada normal, ejemplos con tabla Z; reto superado (8/9) |
 
 ---
 
