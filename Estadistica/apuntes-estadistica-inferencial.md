@@ -433,9 +433,96 @@ Estandarización: `Z = (X − μ)/σ ~ N(0,1)` permite usar la tabla Z.
 
 ---
 
-## Tema 7: Distribuciones muestrales ⬜
+## Tema 7: Distribuciones muestrales ✅
 
-*Por agregar...*
+### Concepto fundamental
+
+Una **distribución muestral** es la distribución de probabilidad de un estadístico (como la media x̄ o proporción p̂) obtenido de todas las muestras posibles de tamaño n de una población.
+
+---
+
+### Distribución muestral de la media
+
+**Propiedades:**
+- `E[X̄] = μ` (la media muestral es insesgada)
+- `σ_X̄ = σ / √n` (error estándar)
+
+**Interpretación:** A mayor tamaño de muestra, menor dispersión de las medias muestrales alrededor de μ.
+
+**Ejemplo:** Si μ = 50, σ = 12, n = 36:
+- E[X̄] = 50
+- σ_X̄ = 12/√36 = 12/6 = 2
+
+---
+
+### Distribución muestral de la proporción
+
+**Propiedades:**
+- `E[p̂] = p`
+- `σ_p̄ = √(p(1-p) / n)`
+
+**Ejemplo:** Si p = 0.65, n = 200:
+- E[p̂] = 0.65
+- σ_p̄ = √(0.65 · 0.35 / 200) ≈ 0.034
+
+---
+
+### Distribución t de Student
+
+**Cuándo se usa:** σ desconocida, población normal, muestra pequeña (n < 30).
+
+**Estadístico:**
+`t = (x̄ − μ) / (s / √n)` con `gl = n − 1`
+
+**Comparación con Z:**
+- t tiene colas más pesadas (más dispersa)
+- Converge a Z cuando n → ∞
+
+---
+
+### Distribución Chi-cuadrado (χ²)
+
+**Uso:** Inferencias sobre la varianza poblacional σ².
+
+**Estadístico:**
+`χ² = (n − 1) · s² / σ²` con `gl = n − 1`
+
+**Propiedades:**
+- Solo valores positivos
+- Asimétrica (cola derecha más larga)
+
+**Ejemplo:** n = 16, s² = 6, σ² = 4:
+- χ² = 15 · 6 / 4 = 22.5
+- gl = 15
+
+---
+
+### Distribución F (Fisher)
+
+**Uso:** Comparar dos varianzas de poblaciones normales independientes.
+
+**Estadístico:**
+`F = s₁² / s₂²` con `gl₁ = n₁ − 1`, `gl₂ = n₂ − 1`
+
+**Propiedades:**
+- Solo valores positivos
+- Asimétrica
+- Si σ₁² = σ₂², entonces F ≈ 1
+
+**Ejemplo:** s₁² = 4.2 (n₁ = 15), s₂² = 2.8 (n₂ = 12):
+- F = 4.2 / 2.8 = 1.5
+- gl₁ = 14, gl₂ = 11
+
+---
+
+### Resumen de distribuciones muestrales
+
+| Distribución | Usa cuando | Estadístico | gl |
+|--------------|------------|-------------|-----|
+| Normal (Z) | σ conocida | `Z = (x̄ − μ) / (σ/√n)` | — |
+| t de Student | σ desconocida | `t = (x̄ − μ) / (s/√n)` | n − 1 |
+| χ² | Inferir σ² | `χ² = (n−1)s² / σ²` | n − 1 |
+| F | Comparar σ₁² y σ₂² | `F = s₁² / s₂²` | n₁−1, n₂−1
 
 ---
 
@@ -547,6 +634,7 @@ Tres máquinas: M1 50% (6% defectuosas), M2 30% (3% defectuosas), M3 20% (4% def
 | 2026-09-10 | Tema 3 (Completado) | Principios de conteo, factorial, permutaciones, combinaciones |
 | 2026-09-10 | Tema 2 (Completado), Tema 4 (Conceptos vistos) | Reto de funciones completado, conceptos de probabilidad (reto pendiente) |
 | 2026-09-13 | Tema 6 (Completado), Tema 15 (Bayes, repaso) | Reto de distribuciones superado; apuntes migrados a Unicode; repaso de Bayes con ejercicio |
+| 2026-09-14 | Tema 7 (Completado) | Distribuciones muestrales: media, proporción, t de Student, Chi-cuadrado y F; reto superado (6/7) |
 
 ---
 

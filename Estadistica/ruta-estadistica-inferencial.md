@@ -14,7 +14,7 @@
 | 4 | Probabilidad | [x] |
 | 5 | Variables aleatorias | [x] |
 | 6 | Distribuciones de probabilidad | [x] |
-| 7 | Distribuciones muestrales | [ ] |
+| 7 | Distribuciones muestrales | [x] |
 | 8 | Ley de los números grandes y TLC | [ ] |
 | 9 | Muestreo | [ ] |
 | 10 | Hipótesis, significancia, valor p, potencia, errores | [ ] |
@@ -116,15 +116,15 @@
 
 ---
 
-## Tema 7: Distribuciones muestrales  [ ]
+## Tema 7: Distribuciones muestrales  [x]
 
 **Objetivo:** Comprender cómo se distribuye la media muestral y su error estándar.
 
-- [ ] Distribución muestral de la media: `μ_X̄ = μ`, error estándar `σ_X̄ = σ/√n`
-- [ ] Distribución muestral de la proporción
-- [ ] Distribución `t` de Student (σ desconocida, `df = n − 1`)
-- [ ] Distribución Chi-cuadrado y F (para varianzas)
-- [ ] Reto/evaluación: calcular la distribución muestral y el error estándar de un caso dado
+- [x] Distribución muestral de la media: `μ_X̄ = μ`, error estándar `σ_X̄ = σ/√n`
+- [x] Distribución muestral de la proporción
+- [x] Distribución `t` de Student (σ desconocida, `df = n − 1`)
+- [x] Distribución Chi-cuadrado y F (para varianzas)
+- [x] Reto/evaluación: calcular la distribución muestral y el error estándar de un caso dado
 
 ---
 
@@ -239,7 +239,7 @@
 - [x] Tema 4: Probabilidad
 - [x] Tema 5: Variables aleatorias
 - [x] Tema 6: Distribuciones de probabilidad
-- [ ] Tema 7: Distribuciones muestrales
+- [x] Tema 7: Distribuciones muestrales
 - [ ] Tema 8: Ley de los números grandes y TLC
 - [ ] Tema 9: Muestreo
 - [ ] Tema 10: Hipótesis, significancia, valor p, potencia, errores
