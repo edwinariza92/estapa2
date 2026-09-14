@@ -16,7 +16,7 @@
 | 6 | Distribuciones de probabilidad | [x] |
 | 7 | Distribuciones muestrales | [x] |
 | 8 | Ley de los números grandes y TLC | [x] |
-| 9 | Muestreo | [ ] |
+| 9 | Muestreo | [x] |
 | 10 | Hipótesis, significancia, valor p, potencia, errores | [ ] |
 | 11 | Pruebas paramétricas | [ ] |
 | 12 | Pruebas no paramétricas | [ ] |
@@ -139,15 +139,15 @@
 
 ---
 
-## Tema 9: Muestreo  [ ]
+## Tema 9: Muestreo  [x]
 
 **Objetivo:** Conocer los tipos de muestreo y su impacto en la validez de la inferencia.
 
-- [ ] Población vs. muestra; muestreo aleatorio simple
-- [ ] Muestreo estratificado, por conglomerados y sistemático
-- [ ] Sesgo de muestreo y error de muestreo
-- [ ] Tamaño de muestra y su relación con el error estándar
-- [ ] Reto/evaluación: determinar el método de muestreo adecuado para un estudio
+- [x] Población vs. muestra; muestreo aleatorio simple
+- [x] Muestreo estratificado, por conglomerados y sistemático
+- [x] Sesgo de muestreo y error de muestreo
+- [x] Tamaño de muestra y su relación con el error estándar
+- [x] Reto/evaluación: determinar el método de muestreo adecuado para un estudio
 
 ---
 
@@ -241,7 +241,7 @@
 - [x] Tema 6: Distribuciones de probabilidad
 - [x] Tema 7: Distribuciones muestrales
 - [x] Tema 8: Ley de los números grandes y TLC
-- [ ] Tema 9: Muestreo
+- [x] Tema 9: Muestreo
 - [ ] Tema 10: Hipótesis, significancia, valor p, potencia, errores
 - [ ] Tema 11: Pruebas paramétricas
 - [ ] Tema 12: Pruebas no paramétricas

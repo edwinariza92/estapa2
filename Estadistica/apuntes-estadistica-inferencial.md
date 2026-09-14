@@ -594,9 +594,91 @@ Sí, porque n = 50 ≥ 30.
 
 ---
 
-## Tema 9: Muestreo ⬜
+## Tema 9: Muestreo ✅
 
-*Por agregar...*
+### Población vs. Muestra
+
+| Concepto | Definición | Ejemplo |
+|----------|------------|---------|
+| **Población** | Todos los elementos de interés | Todos los estudiantes de una universidad |
+| **Muestra** | Subconjunto de la población | 200 estudiantes encuestados |
+| **Parámetro** | Valor de la población (μ, σ) | Promedio de calificaciones de todos |
+| **Estadístico** | Valor de la muestra (x̄, s) | Promedio de los 200 encuestados |
+
+---
+
+### Tipos de muestreo
+
+#### Muestreo aleatorio simple (MAS)
+Cada elemento tiene la **misma probabilidad** de ser seleccionado.
+
+#### Muestreo estratificado
+La población se divide en **grupos homogéneos** (estratos) y se toma una muestra de **cada uno**.
+
+**Ejemplo:** Universidades con 60% mujeres y 40% hombres → muestra de 200: 120 mujeres, 80 hombres.
+
+#### Muestreo por conglomerados
+La población se divide en **grupos heterogéneos** (conglomerados) y se seleccionan algunos grupos **completos**.
+
+**Ejemplo:** Elegir 5 hospitales al azar y encuestar a **todos** los pacientes de esos hospitales.
+
+#### Muestreo sistemático
+Se elige un punto de inicio aleatorio y se toma cada k-ésimo elemento.
+
+**Fórmula:** `k = N / n`
+
+---
+
+### Diferencia clave: estratificado vs. conglomerados
+
+| Tipo | Cuándo usarlo |
+|------|---------------|
+| **Estratificado** | Grupos homogéneos **dentro** pero heterogéneos **entre sí** → quieres representar a todos |
+| **Conglomerados** | Grupos heterogéneos **dentro** pero homogéneos **entre sí** → seleccionas algunos grupos completos |
+
+---
+
+### Sesgo de muestreo
+
+El **sesgo** ocurre cuando la muestra **no representa fielmente** a la población.
+
+| Tipo | Descripción | Ejemplo |
+|------|-------------|---------|
+| **De selección** | El método favorece a ciertos grupos | Solo encuestar en un centro comercial los sábados por la mañana |
+| **De no respuesta** | Algunos elegidos no participan | Personas con opiniones extremas son más propensas a responder |
+| **De supervivencia** | Solo se estudia a quienes "sobreviven" | Estudiar solo empresas exitosas, ignorando las que quebraron |
+
+---
+
+### Error de muestreo
+
+Es la **diferencia** entre el valor del estadístico muestral y el valor real del parámetro poblacional.
+
+**Se mide con el error estándar:**
+- Para la media: `σ_X̄ = σ / √n`
+- Para la proporción: `σ_p̄ = √(p(1-p) / n)`
+
+**Importancia:** Nos dice qué tan precisa es la estimación. Disminuye cuando aumenta n.
+
+---
+
+### Tamaño de muestra
+
+**Fórmula para estimar la media con error máximo E:**
+
+`n = (Z · σ / E)²`
+
+**Valores de Z según nivel de confianza:**
+
+| Nivel de confianza | Z |
+|--------------------|-----|
+| 90% | 1.645 |
+| 95% | 1.96 |
+| 98% | 2.33 |
+| 99% | 2.576 |
+
+**Ejemplo:** σ = 10, error máximo E = 2, 95% confianza:
+`n = (1.96 · 10 / 2)² ≈ 96`
 
 ---
 
@@ -698,6 +780,7 @@ Tres máquinas: M1 50% (6% defectuosas), M2 30% (3% defectuosas), M3 20% (4% def
 | 2026-09-13 | Tema 6 (Completado), Tema 15 (Bayes, repaso) | Reto de distribuciones superado; apuntes migrados a Unicode; repaso de Bayes con ejercicio |
 | 2026-09-14 | Tema 7 (Completado) | Distribuciones muestrales: media, proporción, t de Student, Chi-cuadrado y F; reto superado (6/7) |
 | 2026-09-14 | Tema 8 (Completado) | LNN y TLC: convergencia, distribución aproximada normal, ejemplos con tabla Z; reto superado (8/9) |
+| 2026-09-14 | Tema 9 (Completado) | Muestreo: tipos (aleatorio, estratificado, conglomerados, sistemático), sesgo y error; reto superado (9/9) |
 
 ---
 
