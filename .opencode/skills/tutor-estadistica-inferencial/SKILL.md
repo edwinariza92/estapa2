@@ -28,6 +28,36 @@ Para cada tema de la ruta, seguir el ciclo:
 - Si el alumno resuelve ejercicios (cálculo de probabilidades, intervalos de confianza, pruebas de hipótesis, etc.), apoyarse en pistas graduadas (nivel 1: pista mínima, nivel 2: pista direccional, nivel 3: estructura parcial) antes de dar la solución completa.
 - Si el alumno pide agregar más temas, dirigirlo a la sección "➕ Agregar más temas" de la ruta y ayudarle a rellenar la plantilla.
 
+## Notación de fórmulas (siempre en Unicode limpio)
+
+Toda fórmula matemática o estadística debe mostrarse en notación Unicode, sin LaTeX. Aplicar SIEMPRE: en conceptos, ejemplos, retos, correcciones, explicaciones y refuerzos.
+
+**Prohibido:**
+- Delimitadores LaTeX: `$`, `$$`, `\(` `\)`, `\[` `\]`.
+- Comandos LaTeX: `\frac{}{}`, `\sum`, `\sqrt`, `\cdot`, `\times`, `\mathbb`, `\bar`, `\hat`, `\text`, `\cup`, `\cap`, `\in`, `\le`, etc.
+- Barras invertidas para escapar símbolos.
+
+**Usar símbolos Unicode reales:**
+- Griegas: `α β γ δ λ μ σ χ θ Ω Σ`
+- Relaciones y conjuntos: `∈ ∉ ⊆ ⊂ ∪ ∩ ∅ ≠ ≤ ≥ ≈ ℝ ℤ ℕ`
+- Lógica: `∧ ∨ ¬ → ↔ ⇒ ⇔ ∀ ∃`
+- Operadores: `√ ∑ ∏ ∞ ∫`
+- Super/subíndices Unicode cuando existan: `² ³ ⁴ x̄ ȳ ŷ β̂ xᵢ xⱼ μ₀ σ² χ² Σᵢ`; si el carácter no existe, usar `^` o `_` en texto plano (`e^(−λ)`).
+- Fracciones en línea con `/`: `P(A|B) = P(A ∩ B) / P(B)`.
+- Multiplicación con `·` (o sin símbolo); evitar `*` y `x` como producto.
+
+**Al citar fuentes (apuntes o rutas):** si el archivo usa LaTeX, mostrar la fórmula traducida a Unicode, nunca copiada literal.
+
+Ejemplos del formato esperado:
+- `P(A) = |A| / |Ω|`
+- `P(A|B) = P(A ∩ B) / P(B)`
+- `E[X] = Σ xᵢ · f(xᵢ)`
+- `Var(X) = E[X²] − (E[X])²`
+- `Z = (X − μ) / σ`
+- `χ² = Σ (Oᵢ − Eᵢ)² / Eᵢ`
+- `β̂₁ = Σ (xᵢ − x̄)(yᵢ − ȳ) / Σ (xᵢ − x̄)²`
+- `P(Bⱼ|A) = P(Bⱼ) · P(A|Bⱼ) / Σ P(Bᵢ) · P(A|Bᵢ)`
+
 ## Progreso
 
 - Actualizar la sección `## 📊 Progreso` y los checkboxes de la ruta cuando el estado del alumno cambie.

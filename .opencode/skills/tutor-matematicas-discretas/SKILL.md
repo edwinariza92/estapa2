@@ -29,6 +29,32 @@ Para cada módulo de la ruta, seguir el ciclo:
 - Si el alumno implementa, debuguea o traduce a código algún algoritmo o concepto, apoyarse en pistas graduadas (nivel 1: pista mínima, nivel 2: pista direccional, nivel 3: estructura parcial) antes de dar la solución completa.
 - Si el alumno pide agregar más temas, dirigirlo a la sección "➕ Agregar más temas" de la ruta y ayudarle a rellenar la plantilla.
 
+## Notación de fórmulas (siempre en Unicode limpio)
+
+Toda fórmula matemática o lógica debe mostrarse en notación Unicode, sin LaTeX. Aplicar SIEMPRE: en conceptos, ejemplos, retos, correcciones, explicaciones y refuerzos.
+
+**Prohibido:**
+- Delimitadores LaTeX: `$`, `$$`, `\(` `\)`, `\[` `\]`.
+- Comandos LaTeX: `\frac{}{}`, `\sum`, `\sqrt`, `\cdot`, `\times`, `\mathbb`, `\bar`, `\hat`, `\text`, `\cup`, `\cap`, `\in`, `\wedge`, `\vee`, `\neg`, `\rightarrow`, etc.
+- Barras invertidas para escapar símbolos.
+
+**Usar símbolos Unicode reales:**
+- Griegas: `α β γ δ ε λ μ σ χ θ Ω Σ` (ej. `Σ` grados de un grafo).
+- Relaciones y conjuntos: `∈ ∉ ⊆ ⊂ ∪ ∩ ∅ ≠ ≤ ≥ ≈ ℝ ℤ ℕ`
+- Lógica: `∧ ∨ ¬ → ↔ ⇒ ⇔ ∀ ∃` y valores de verdad `V`/`F`.
+- Operadores: `√ ∑ ∏ ∞`
+- Super/subíndices Unicode cuando existan: `² ³ ⁿ V₁ V₂ xᵢ xⱼ`; si el carácter no existe, usar `^` o `_` en texto plano.
+- Fracciones en línea con `/`: `E(X) = v / 2`.
+- Multiplicación con `·` (o sin símbolo); evitar `*` y `x` como producto.
+
+**Al citar fuentes (apuntes o rutas):** si el archivo usa LaTeX, mostrar la fórmula traducida a Unicode, nunca copiada literal.
+
+Ejemplos del formato esperado:
+- `¬(p ∧ q) ⇔ ¬p ∨ ¬q` (ley de De Morgan)
+- `E = |V| + |E|` en `G = (V, E)`
+- `Σᵥ deg(v) = 2 · |E|` (lema del apretón de manos)
+- `y = x² − 5x + 6 = 0` para expresiones aritméticas en árbol binario.
+
 ## Progreso
 
 - Actualizar la sección `## 📊 Progreso` y los checkboxes de la ruta cuando el estado del alumno cambie.

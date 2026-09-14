@@ -13,7 +13,7 @@
 | 3 | Análisis combinatorio | [x] |
 | 4 | Probabilidad | [x] |
 | 5 | Variables aleatorias | [x] |
-| 6 | Distribuciones de probabilidad | [ ] |
+| 6 | Distribuciones de probabilidad | [x] |
 | 7 | Distribuciones muestrales | [ ] |
 | 8 | Ley de los números grandes y TLC | [ ] |
 | 9 | Muestreo | [ ] |
@@ -22,7 +22,7 @@
 | 12 | Pruebas no paramétricas | [ ] |
 | 13 | Distribución Chi-cuadrado | [ ] |
 | 14 | Método de mínimos cuadrados | [ ] |
-| 15 | Teorema de Bayes | [ ] |
+| 15 | Teorema de Bayes | [x] |
 
 ---
 
@@ -93,7 +93,7 @@
 
 ---
 
-## Tema 6: Distribuciones de probabilidad  [ ]
+## Tema 6: Distribuciones de probabilidad  [x]
 
 **Objetivo:** Conocer las principales distribuciones discretas y continuas, su esperanza y varianza.
 
@@ -112,7 +112,7 @@
 **Medidas**
 - [x] Esperanza matemática: `E[X] = Σ xᵢ f(xᵢ)`
 - [x] Varianza y desviación estándar: `Var(X) = E[X²] − (E[X])²`
-- [ ] Reto/evaluación: identificar la distribución adecuada para un problema y calcular esperanza y varianza
+- [x] Reto/evaluación: identificar la distribución adecuada para un problema y calcular esperanza y varianza
 
 ---
 
@@ -217,16 +217,16 @@
 
 ---
 
-## Tema 15: Teorema de Bayes  [ ]
+## Tema 15: Teorema de Bayes  [x]
 
 **Objetivo:** Dominar el Teorema de Bayes y su aplicación para actualizar probabilidades a partir de nueva evidencia.
 
-- [ ] Fórmula de Bayes: `P(Bⱼ|A) = P(Bⱼ) · P(A|Bⱼ) / Σ P(Bᵢ) · P(A|Bᵢ)`
-- [ ] Probabilidad a priori vs. a posteriori: cómo la evidencia actualiza la creencia inicial
-- [ ] Probabilidad total como denominador: `P(A) = Σ P(Bᵢ) · P(A|Bᵢ)`
-- [ ] Ejemplo clásico: prueba médica con falsos positivos/negativos
-- [ ] Aplicación práctica: clasificación, diagnóstico, filtros de spam
-- [ ] Reto/evaluación: resolver un problema de Bayes completo (prior → evidencia → posterior) e interpretar el resultado en contexto
+- [x] Fórmula de Bayes: `P(Bⱼ|A) = P(Bⱼ) · P(A|Bⱼ) / Σ P(Bᵢ) · P(A|Bᵢ)`
+- [x] Probabilidad a priori vs. a posteriori: cómo la evidencia actualiza la creencia inicial
+- [x] Probabilidad total como denominador: `P(A) = Σ P(Bᵢ) · P(A|Bᵢ)`
+- [x] Ejemplo clásico: prueba médica con falsos positivos/negativos
+- [x] Aplicación práctica: clasificación, diagnóstico, filtros de spam
+- [x] Reto/evaluación: resolver un problema de Bayes completo (prior → evidencia → posterior) e interpretar el resultado en contexto
 
 ---
 
@@ -238,7 +238,7 @@
 - [x] Tema 3: Análisis combinatorio
 - [x] Tema 4: Probabilidad
 - [x] Tema 5: Variables aleatorias
-- [ ] Tema 6: Distribuciones de probabilidad
+- [x] Tema 6: Distribuciones de probabilidad
 - [ ] Tema 7: Distribuciones muestrales
 - [ ] Tema 8: Ley de los números grandes y TLC
 - [ ] Tema 9: Muestreo
@@ -247,7 +247,7 @@
 - [ ] Tema 12: Pruebas no paramétricas
 - [ ] Tema 13: Distribución Chi-cuadrado
 - [ ] Tema 14: Método de mínimos cuadrados
-- [ ] Tema 15: Teorema de Bayes
+- [x] Tema 15: Teorema de Bayes
 
 ---
 
