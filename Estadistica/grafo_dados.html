@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Grafo - Ejercicio 2.1</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 30px; background: #f5f5f5; }
+        h2 { color: #333; }
+        canvas { border: 1px solid #ccc; background: white; margin-top: 10px; }
+        p { color: #555; font-size: 14px; }
+    </style>
+</head>
+<body>
+    <h2>Grafo: Suma Par de Dados</h2>
+    <p>Vértices = caras del dado {1,2,3,4,5,6}. Arista si la suma es par (ambos impares o ambos pares).</p>
+    <canvas id="grafo" width="500" height="420"></canvas>
+    <script>
+        const canvas = document.getElementById('grafo');
+        const ctx = canvas.getContext('2d');
+        const cx = 250, cy = 200, radio = 130;
+        const vertices = [];
+        for (let i = 1; i <= 6; i++) {
+            const ang = (i - 1) * Math.PI / 3 - Math.PI / 2;
+            vertices.push({ x: cx + radio * Math.cos(ang), y: cy + radio * Math.sin(ang), n: i });
+        }
+        const aristas = [];
+        for (let i = 1; i <= 6; i++)
+            for (let j = i + 1; j <= 6; j++)
+                if ((i + j) % 2 === 0) aristas.push([i, j]);
+        ctx.lineWidth = 2; ctx.strokeStyle = '#888';
+        aristas.forEach(([a, b]) => {
+            const va = vertices[a-1], vb = vertices[b-1];
+            ctx.beginPath(); ctx.moveTo(va.x, va.y); ctx.lineTo(vb.x, vb.y); ctx.stroke();
+        });
+        vertices.forEach(v => {
+            ctx.beginPath(); ctx.arc(v.x, v.y, 22, 0, Math.PI * 2);
+            ctx.fillStyle = v.n % 2 === 0 ? '#3498db' : '#e74c3c';
+            ctx.fill(); ctx.strokeStyle = '#333'; ctx.lineWidth = 2; ctx.stroke();
+            ctx.fillStyle = 'white'; ctx.font = 'bold 18px Arial';
+            ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+            ctx.fillText(v.n, v.x, v.y);
+        });
+        ctx.fillStyle = '#e74c3c'; ctx.fillRect(20, 370, 16, 16);
+        ctx.fillStyle = '#333'; ctx.font = '13px Arial'; ctx.textAlign = 'left';
+        ctx.fillText('Impares (1,3,5) — grado 2', 42, 383);
+        ctx.fillStyle = '#3498db'; ctx.fillRect(260, 370, 16, 16);
+        ctx.fillStyle = '#333'; ctx.fillText('Pares (2,4,6) — grado 2', 282, 383);
+    </script>
+</body>
+</html>
