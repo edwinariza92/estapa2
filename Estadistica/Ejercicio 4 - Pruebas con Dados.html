@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 4 - Pruebas con Dados</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 30px; background: #f5f5f5; }
+        h1 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        h2 { color: #2980b9; margin-top: 30px; }
+        h3 { color: #27ae60; }
+        table { border-collapse: collapse; width: 100%; margin: 15px 0; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: center; }
+        th { background: #3498db; color: white; }
+        tr:nth-child(even) { background: #f2f2f2; }
+        .resultado { background: #e8f5e9; padding: 15px; border-left: 4px solid #4caf50; margin: 15px 0; }
+        .rechazar { background: #ffebee; padding: 15px; border-left: 4px solid #f44336; margin: 15px 0; }
+        .formula { background: #fff3e0; padding: 10px; border-radius: 5px; font-family: monospace; margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <h1>Ejercicio 4 - Pruebas Estadísticas Avanzadas con Dados</h1>
+
+    <!-- EJERCICIO 4.1 -->
+    <h2>Ejercicio 4.1: Prueba de Hipótesis Nula</h2>
+
+    <h3>Datos de la simulación</h3>
+    <table>
+        <tr><th>Dato</th><th>Valor</th></tr>
+        <tr><td>Total de lanzamientos (n)</td><td>60</td></tr>
+        <tr><td>Veces que salió suma 7 (k)</td><td>16</td></tr>
+        <tr><td>Probabilidad teórica (p)</td><td>1/6 = 0.1667</td></tr>
+        <tr><td>Coeficiente binomial C(60,16)</td><td>149,608,375,854,525</td></tr>
+    </table>
+
+    <h3>Resultados</h3>
+    <table>
+        <tr><th>Concepto</th><th>Resultado</th><th>Interpretación</th></tr>
+        <tr><td>P(X = 16)</td><td>0.0174 = 1.74%</td><td>Probabilidad de obtener exactamente 16 sumas de 7</td></tr>
+        <tr><td>P(X ≥ 16)</td><td>0.0338 = 3.38%</td><td>Probabilidad de obtener 16 o más sumas de 7</td></tr>
+    </table>
+
+    <div class="formula">
+        <strong>Fórmula:</strong> P(X = k) = C(n, k) × p<sup>k</sup> × (1−p)<sup>(n−k)</sup><br>
+        <strong>Cálculo:</strong> P(X ≥ 16) = P(X=16) + P(X=17) + ... + P(X=60) = 0.0338
+    </div>
+
+    <h3>Prueba de Hipótesis</h3>
+    <table>
+        <tr><th>Elemento</th><th>Valor</th></tr>
+        <tr><td>H₀</td><td>p = 1/6 (la probabilidad de que salga 7 es 1/6)</td></tr>
+        <tr><td>H₁</td><td>p ≠ 1/6</td></tr>
+        <tr><td>p-value</td><td>3.38%</td></tr>
+        <tr><td>α (nivel de significancia)</td><td>5%</td></tr>
+    </table>
+
+    <div class="rechazar">
+        <strong>Decisión:</strong> SÍ se rechaza H₀ (3.38% < 5%)<br>
+        <strong>Conclusión:</strong> La probabilidad de que la suma sea 7 NO es 1/6. Los dados podrían estar cargados.
+    </div>
+
+    <!-- EJERCICIO 4.2 -->
+    <h2>Ejercicio 4.2: Prueba de Chi-cuadrado</h2>
+
+    <h3>Frecuencias observadas vs esperadas</h3>
+    <table>
+        <tr><th>Suma</th><th>Observado (O)</th><th>Prob. teórica</th><th>Esperado (E)</th><th>(O−E)²/E</th><th>Formas</th></tr>
+        <tr><td>2</td><td>3</td><td>1/36</td><td>1.67</td><td>1.07</td><td>(1,1)</td></tr>
+        <tr><td>3</td><td>4</td><td>2/36</td><td>3.33</td><td>0.13</td><td>(1,2)(2,1)</td></tr>
+        <tr><td>4</td><td>6</td><td>3/36</td><td>5.00</td><td>0.20</td><td>(1,3)(2,2)(3,1)</td></tr>
+        <tr><td>5</td><td>6</td><td>4/36</td><td>6.67</td><td>0.07</td><td>(1,4)(2,3)(3,2)(4,1)</td></tr>
+        <tr><td>6</td><td>6</td><td>5/36</td><td>8.33</td><td>0.65</td><td>(1,5)(2,4)(3,3)(4,2)(5,1)</td></tr>
+        <tr><td>7</td><td>6</td><td>6/36</td><td>10.00</td><td>1.60</td><td>(1,6)(2,5)(3,4)(4,3)(5,2)(6,1)</td></tr>
+        <tr><td>8</td><td>9</td><td>5/36</td><td>8.33</td><td>0.05</td><td>(2,6)(3,5)(4,4)(5,3)(6,2)</td></tr>
+        <tr><td>9</td><td>10</td><td>4/36</td><td>6.67</td><td>1.67</td><td>(3,6)(4,5)(5,4)(6,3)</td></tr>
+        <tr><td>10</td><td>6</td><td>3/36</td><td>5.00</td><td>0.20</td><td>(4,6)(5,5)(6,4)</td></tr>
+        <tr><td>11</td><td>3</td><td>2/36</td><td>3.33</td><td>0.03</td><td>(5,6)(6,5)</td></tr>
+        <tr><td>12</td><td>1</td><td>1/36</td><td>1.67</td><td>0.27</td><td>(6,6)</td></tr>
+        <tr style="font-weight:bold; background:#e3f2fd;"><td>TOTAL</td><td>60</td><td></td><td></td><td>5.94</td><td></td></tr>
+    </table>
+
+    <h3>Conclusión</h3>
+    <table>
+        <tr><th>Elemento</th><th>Valor</th></tr>
+        <tr><td>χ² calculado</td><td>5.94</td></tr>
+        <tr><td>Grados de libertad</td><td>10 (11 sumas − 1)</td></tr>
+        <tr><td>Valor crítico (α=0.05)</td><td>18.31</td></tr>
+    </table>
+
+    <div class="resultado">
+        <strong>Decisión:</strong> NO se rechaza H₀ (5.94 < 18.31)<br>
+        <strong>Conclusión:</strong> Los dados se comportan de forma consistente con la distribución teórica. No hay evidencia de que estén cargados.
+    </div>
+</body>
+</html>
