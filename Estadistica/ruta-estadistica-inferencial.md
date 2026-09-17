@@ -191,16 +191,16 @@
 
 ---
 
-## Tema 13: Distribución Chi-cuadrado  [ ]
+## Tema 13: Distribución Chi-cuadrado  [x]
 
 **Objetivo:** Dominar la distribución Chi-cuadrado, su tabla de valores y su aplicación en pruebas de bondad de ajuste e independencia.
 
-- [ ] Definición de la distribución Chi-cuadrado: `χ² = Σ (Oᵢ − Eᵢ)² / Eᵢ` con `df = k − 1`
-- [ ] Propiedades: asimétrica, solo valores positivos, forma depende de los grados de libertad
-- [ ] Uso en pruebas de bondad de ajuste (¿los datos siguen una distribución esperada?)
-- [ ] Uso en pruebas de independencia (¿dos variables categóricas son independientes?)
-- [ ] Cálculo de valores críticos con tablas de Chi-cuadrado
-- [ ] Reto/evaluación: plantear y resolver una prueba Chi-cuadrado de bondad de ajuste paso a paso
+- [x] Definición de la distribución Chi-cuadrado: `χ² = Σ (Oᵢ − Eᵢ)² / Eᵢ` con `df = k − 1`
+- [x] Propiedades: asimétrica, solo valores positivos, forma depende de los grados de libertad
+- [x] Uso en pruebas de bondad de ajuste (¿los datos siguen una distribución esperada?)
+- [x] Uso en pruebas de independencia (¿dos variables categóricas son independientes?)
+- [x] Cálculo de valores críticos con tablas de Chi-cuadrado
+- [x] Reto/evaluación: plantear y resolver una prueba Chi-cuadrado de bondad de ajuste paso a paso
 
 ---
 
@@ -245,7 +245,7 @@
 - [x] Tema 10: Hipótesis, significancia, valor p, potencia, errores
 - [ ] Tema 11: Pruebas paramétricas
 - [ ] Tema 12: Pruebas no paramétricas
-- [ ] Tema 13: Distribución Chi-cuadrado
+- [x] Tema 13: Distribución Chi-cuadrado
 - [ ] Tema 14: Método de mínimos cuadrados
 - [x] Tema 15: Teorema de Bayes
 

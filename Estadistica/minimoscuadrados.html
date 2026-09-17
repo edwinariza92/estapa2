@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gráficas: χ² y Mínimos Cuadrados</title>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  :root {
+    --primary:#6366f1; --primary-dark:#4f46e5; --secondary:#8b5cf6;
+    --success:#10b981; --warning:#f59e0b; --danger:#ef4444;
+    --dark:#1e293b; --gray:#64748b; --light:#f1f5f9; --white:#fff;
+    --g1:linear-gradient(135deg,#667eea 0%,#764ba2 100%);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Inter',sans-serif;line-height:1.7;color:var(--dark);background:var(--light);}
+  .navbar{position:fixed;top:0;left:0;right:0;background:rgba(255,255,255,.97);backdrop-filter:blur(10px);box-shadow:0 2px 20px rgba(0,0,0,.1);z-index:1000;padding:12px 0;}
+  .nav-container{max-width:1400px;margin:0 auto;padding:0 25px;display:flex;justify-content:space-between;align-items:center;gap:20px;}
+  .nav-logo{font-size:1.3em;font-weight:800;background:var(--g1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;white-space:nowrap;}
+  .nav-links{display:flex;gap:22px;list-style:none;}
+  .nav-links a{text-decoration:none;color:var(--dark);font-weight:500;font-size:0.9em;transition:color .3s;}
+  .nav-links a:hover{color:var(--primary);}
+  .hero{background:linear-gradient(135deg,#4338ca 0%,#6366f1 50%,#8b5cf6 100%);color:#fff;padding:130px 30px 80px;text-align:center;}
+  .hero h1{font-size:2.8em;font-weight:800;margin-bottom:15px;text-shadow:2px 2px 4px rgba(0,0,0,.2);}
+  .hero p{font-size:1.2em;opacity:.95;max-width:800px;margin:0 auto;}
+  .main-content{max-width:1200px;margin:40px auto 60px;padding:0 25px;}
+  .topic-card{background:#fff;border-radius:20px;box-shadow:0 10px 40px rgba(0,0,0,.08);margin-bottom:40px;overflow:hidden;}
+  .topic-header{padding:25px 30px;color:#fff;display:flex;align-items:center;gap:20px;background:var(--g1);}
+  .topic-header.g2{background:linear-gradient(135deg,#4facfe 0%,#00f2fe 100%);}
+  .topic-icon{width:55px;height:55px;background:rgba(255,255,255,.25);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.6em;flex-shrink:0;}
+  .topic-title{font-size:1.6em;font-weight:700;}
+  .topic-subtitle{font-size:.95em;opacity:.92;}
+  .topic-content{padding:30px;}
+  .formula-box{background:linear-gradient(135deg,#f8fafc 0%,#e2e8f0 100%);border-left:5px solid var(--primary);padding:22px;margin:20px 0;border-radius:0 12px 12px 0;}
+  .formula-box .formula-label{font-weight:700;color:var(--primary);margin-bottom:10px;font-size:.95em;}
+  .formula-box .formula-content{text-align:center;padding:10px 0;font-size:1.1em;}
+  .danger-box{background:linear-gradient(135deg,#fee2e2 0%,#fecaca 100%);border:2px solid var(--danger);border-radius:12px;padding:18px;margin:20px 0;}
+  .danger-box h4{color:#991b1b;margin-bottom:8px;}
+  .danger-box p{color:#7f1d1d;font-size:.93em;}
+  .tip-box{background:linear-gradient(135deg,#fef3c7 0%,#fde68a 100%);border:2px solid var(--warning);border-radius:12px;padding:18px;margin:20px 0;}
+  .tip-box h4{color:#92400e;margin-bottom:8px;}
+  .tip-box p{color:#78350f;font-size:.93em;}
+  .concept-box{background:linear-gradient(135deg,#eef2ff 0%,#e0e7ff 100%);border:2px solid #c7d2fe;border-radius:12px;padding:20px;margin:20px 0;}
+  .concept-box p{font-size:.95em;}
+  .type-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin:20px 0;}
+  .type-card{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:18px;transition:transform .2s,box-shadow .2s;}
+  .type-card:hover{transform:translateY(-3px);box-shadow:0 10px 25px rgba(0,0,0,.1);}
+  .type-card h5{color:var(--primary);margin-bottom:8px;font-size:1em;display:flex;align-items:center;gap:8px;}
+  .type-card p{font-size:.88em;color:#475569;}
+  .formula-mini{background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:8px 10px;margin-top:10px;text-align:center;font-size:.92em;color:var(--dark);}
+  .formula-mini .gl{color:var(--danger);font-weight:700;}
+  .example-box{background:linear-gradient(135deg,#ecfdf5 0%,#d1fae5 100%);border:2px solid var(--success);border-radius:12px;padding:20px;margin:20px 0;}
+  .example-box h4{color:var(--success);margin-bottom:10px;display:flex;align-items:center;gap:8px;font-size:1.05em;}
+  .example-box p,.example-box li{font-size:.95em;}
+  .example-box ol{padding-left:20px;margin:8px 0;}
+  .graph-card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:14px;padding:20px;margin:20px 0;}
+  .graph-card h4{color:var(--primary);margin-bottom:4px;font-size:1.05em;}
+  .graph-card .caption{color:var(--gray);font-size:.88em;margin-bottom:14px;}
+  .controls{display:flex;flex-wrap:wrap;gap:18px;margin:16px 0;align-items:center;background:#eef2ff;border:1px solid #c7d2fe;border-radius:12px;padding:14px 18px;}
+  .control{display:flex;flex-direction:column;gap:4px;font-size:.85em;color:var(--gray);}
+  .control label{font-weight:600;font-size:.82em;text-transform:uppercase;letter-spacing:.4px;color:var(--primary-dark);}
+  .control input[type=range]{width:200px;}
+  .control .val{font-weight:700;color:var(--dark);font-size:1.05em;}
+  .control .val.violet{color:var(--primary);}
+  .control .val.red{color:var(--danger);}
+  .stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin-top:8px;}
+  .stat-chip{background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:10px;text-align:center;}
+  .stat-chip .label{font-size:.72em;color:var(--gray);text-transform:uppercase;letter-spacing:.4px;font-weight:600;}
+  .stat-chip .num{font-size:1.35em;font-weight:800;color:var(--primary);}
+  svg{max-width:100%;height:auto;}
+  .legend{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:8px;font-size:.85em;color:var(--gray);}
+  .legend span{display:inline-flex;align-items:center;gap:6px;}
+  .legend .dot{width:12px;height:12px;border-radius:50%;display:inline-block;}
+  .table-scroll{overflow-x:auto;margin:20px 0;border-radius:12px;box-shadow:0 5px 20px rgba(0,0,0,.08);}
+  .data-table{width:100%;border-collapse:collapse;background:#fff;min-width:500px;}
+  .data-table thead{background:var(--dark);color:#fff;}
+  .data-table th{padding:12px 14px;text-align:center;font-weight:600;font-size:.9em;}
+  .data-table td{padding:10px 14px;border-bottom:1px solid var(--light);text-align:center;font-size:.9em;}
+  .data-table tbody tr:hover{background:var(--light);}
+  .data-table .hl{background:linear-gradient(135deg,#eef2ff 0%,#e0e7ff 100%);font-weight:700;color:var(--primary);}
+  .data-table .hl-row{background:linear-gradient(135deg,#e0e7ff 0%,#c7d2fe 100%);font-weight:700;color:var(--primary);}
+  .btn{background:var(--g1);color:#fff;border:none;padding:11px 20px;border-radius:50px;font-size:.92em;font-weight:600;cursor:pointer;transition:transform .2s,box-shadow .2s;}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(99,102,241,.35);}
+  .btn-ghost{background:#fff;color:var(--primary);border:1.5px solid #c7d2fe;}
+  .btn-ghost:hover{background:#eef2ff;}
+  .footer{background:var(--dark);color:#fff;text-align:center;padding:40px 30px;}
+  .footer p{opacity:.7;font-size:.92em;}
+  @media(max-width:760px){.hero h1{font-size:1.9em}.nav-links{display:none}.topic-content,.topic-header{padding:20px}.controls{flex-direction:column;align-items:flex-start}.control input[type=range]{width:100%;}}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-container">
+    <div class="nav-logo">📊 Gráficas Estadísticas</div>
+    <ul class="nav-links">
+      <li><a href="#chi2">χ² (Chi-cuadrado)</a></li>
+      <li><a href="#minimos">Mínimos Cuadrados</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <h1>📈 Gráficas Interactivas</h1>
+  <p>Distribución χ² con área de rechazo, y regresión lineal por mínimos cuadrados con residuos. Todo visual y ajustable.</p>
+</section>
+
+<div class="main-content">
+
+  <!-- ============ SECCIÓN CHI CUADRADO ============ -->
+  <div class="topic-card" id="chi2">
+    <div class="topic-header">
+      <div class="topic-icon"><i class="fas fa-chart-area"></i></div>
+      <div>
+        <h2 class="topic-title">Distribución χ² (Chi-cuadrado)</h2>
+        <p class="topic-subtitle">Curvas de densidad, área de rechazo y valor crítico</p>
+      </div>
+    </div>
+    <div class="topic-content">
+
+      <div class="formula-box">
+        <div class="formula-content" style="font-size:1.4em;">
+          \[ \chi^2 = \sum \frac{(O - E)^2}{E} \]
+        </div>
+        <p style="text-align:center;font-size:.9em;color:var(--gray);">O = frecuencia observada · E = frecuencia esperada. Esta es la fórmula que usas para calcular tu χ² en la prueba, y la comparas con el valor crítico de la gráfica.</p>
+      </div>
+
+      <div class="concept-box">
+        <p><strong>¿Qué es?</strong> La χ² (chi-cuadrado) es una prueba de <strong>bondad de ajuste e independencia</strong> para <strong>datos categóricos (conteos)</strong>. Compara cuántas veces viste algo (<strong>O</strong>, observado) contra lo que esperarías si la teoría fuera cierta (<strong>E</strong>, esperado): si la diferencia es demasiado grande, el dato observado no concuerda con lo esperado y todo se explica matemáticamente con el <strong>cuadrado de la diferencia</strong> — por eso el (O−E)². Al elevar al cuadrado eliminamos los signos (acumular diferencias negativas y positivas se cancelaría) y además castigamos mucho más los desvíos grandes.</p>
+        <p style="margin-top:10px;"><strong>Importante:</strong> χ² usa <strong>frecuencias (conteos)</strong>, nunca porcentajes, y casi siempre es una prueba de <strong>cola derecha</strong>: solo rechazas H₀ cuando el valor calculado es <em>grande</em>.</p>
+      </div>
+
+      <div class="formula-box">
+        <div class="formula-label">¿Cuándo se usa? Las 3 pruebas chi-cuadrado</div>
+        <div class="type-grid">
+          <div class="type-card">
+            <h5><i class="fas fa-check-double"></i> 1. Bondad de ajuste</h5>
+            <p>¿Los datos siguen una distribución esperada? 1 sola variable con k categorías.</p>
+            <div class="formula-mini">gl = <span class="gl">k − 1</span></div>
+          </div>
+          <div class="type-card">
+            <h5><i class="fas fa-arrows-alt-h"></i> 2. Independencia</h5>
+            <p>¿2 variables categóricas están relacionadas? Tabla de contingencia r×c.</p>
+            <div class="formula-mini">gl = <span class="gl">(r − 1)(c − 1)</span></div>
+          </div>
+          <div class="type-card">
+            <h5><i class="fas fa-users"></i> 3. Homogeneidad</h5>
+            <p>¿La distribución es igual entre grupos? Misma tabla r×c, pregunta distinta.</p>
+            <div class="formula-mini">gl = <span class="gl">(r − 1)(c − 1)</span></div>
+          </div>
+        </div>
+        <p style="text-align:center;font-size:.9em;color:var(--gray);">El <strong>valor crítico</strong> de la gráfica de arriba se busca justo con esos grados de libertad (k) y tu α.</p>
+      </div>
+
+      <div class="example-box">
+        <h4><i class="fas fa-calculator"></i> Ejemplo completo: ¿la preferencia de gaseosa es uniforme?</h4>
+        <p>Se preguntó a 300 personas por su marca favorita: <strong>A=90, B=50, C=160</strong>. Si no hubiera preferencia (H₀), esperarías <strong>100 y 100 y 100</strong>.</p>
+        <div class="table-scroll">
+          <table class="data-table">
+            <thead><tr><th>Marca</th><th>O (observado)</th><th>E (esperado)</th><th>(O−E)</th><th>(O−E)²</th><th>(O−E)²/E</th></tr></thead>
+            <tbody>
+              <tr><td>A</td><td>90</td><td>100</td><td>−10</td><td>100</td><td>1.00</td></tr>
+              <tr><td>B</td><td>50</td><td>100</td><td>−50</td><td>2500</td><td>25.00</td></tr>
+              <tr><td>C</td><td>160</td><td>100</td><td>60</td><td>3600</td><td>36.00</td></tr>
+              <tr class="hl-row"><td><strong>Σ</strong></td><td>300</td><td>300</td><td>0</td><td>—</td><td><strong>χ² = 62.00</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <ol style="margin-top:14px;">
+          <li><strong>H₀:</strong> no hay preferencia (proporciones iguales). <strong>H₁:</strong> hay preferencia.</li>
+          <li>gl = k − 1 = 2. Con α = 0.05, el valor crítico (míralo en la gráfica con k=2) es <strong>5.991</strong>.</li>
+          <li>Como χ² = 62.00 <strong>&gt; 5.991</strong>, cae en el área roja → <strong>rechazas H₀</strong>. La preferencia NO es uniforme.</li>
+        </ol>
+      </div>
+
+      <div class="graph-card">
+        <h4><i class="fas fa-layer-group"></i> Familia de curvas por grados de libertad</h4>
+        <p class="caption">La χ² cambia de forma con k: sesgada y puntiaguda para k pequeños, casi simétrica para k grandes.</p>
+        <div id="chiFamilies"></div>
+        <div class="legend">
+          <span><span class="dot" style="background:#ef4444"></span> k=1</span>
+          <span><span class="dot" style="background:#f59e0b"></span> k=2</span>
+          <span><span class="dot" style="background:#10b981"></span> k=5</span>
+          <span><span class="dot" style="background:#3b82f6"></span> k=10</span>
+          <span><span class="dot" style="background:#8b5cf6"></span> k=30</span>
+        </div>
+      </div>
+
+      <div class="graph-card">
+        <h4><i class="fas fa-crosshairs"></i> Área de rechazo interactiva</h4>
+        <p class="caption">El área <span style="color:#ef4444;font-weight:700;">roja</span> es el nivel de significancia α. Si tu χ² calculado cae ahí, rechazas H₀.</p>
+        <div id="chiArea"></div>
+        <div class="controls">
+          <div class="control">
+            <label>Grados de libertad (k)</label>
+            <input type="range" id="glSlider" min="1" max="30" value="5">
+            <span class="val violet" id="glVal">5</span>
+          </div>
+          <div class="control">
+            <label>Nivel α</label>
+            <input type="range" id="alphaSlider" min="1" max="10" value="5">
+            <span class="val red" id="alphaVal">0.05</span>
+          </div>
+        </div>
+        <div class="stats-row">
+          <div class="stat-chip"><div class="label">Valor crítico</div><div class="num" id="critVal">—</div></div>
+          <div class="stat-chip"><div class="label">Media (k)</div><div class="num" id="meanVal">—</div></div>
+          <div class="stat-chip"><div class="label">Varianza (2k)</div><div class="num" id="varVal">—</div></div>
+        </div>
+      </div>
+
+      <div class="example-box">
+        <h4><i class="fas fa-check-circle"></i> ¿Cómo se usa en una prueba? (paso a paso)</h4>
+        <ol>
+          <li><strong>Plantea H₀ y H₁.</strong> Las hipótesis se escriben en palabras, tipo: "no hay relación entre las variables" vs "sí hay relación".</li>
+          <li><strong>Calcula los esperados E.</strong> Bondad de ajuste: total ÷ k (o la proporción teórica). Independencia/Homogeneidad: E = (total fila × total columna) ÷ total general, para cada casilla.</li>
+          <li><strong>Calcula</strong> χ² = Σ (O − E)² / E sumando sobre todas las casillas.</li>
+          <li><strong>Halla los grados de libertad</strong> según el tipo de prueba (ver arriba).</li>
+          <li><strong>Busca el valor crítico</strong> con k = gl y tu α en la gráfica interactiva de arriba.</li>
+          <li><strong>Decide:</strong> si χ²_calculado <strong>&gt;</strong> crítico → cae en el área roja → <strong>rechazas H₀</strong> y concluyes que la relación/desviación SÍ existe.</li>
+        </ol>
+      </div>
+
+      <div class="danger-box">
+        <h4><i class="fas fa-exclamation-circle"></i> Errores comunes</h4>
+        <ul style="padding-left:20px;color:#7f1d1d;font-size:.93em;">
+          <li>Usar <strong>porcentajes</strong> en vez de conteos. χ² solo funciona con frecuencias.</li>
+          <li>Dividir α en <strong>2 colas</strong>: la χ² es de cola derecha, solo se rechaza con valores grandes.</li>
+          <li>Olvidar que <strong>cada Esperado debe ser ≥ 5</strong>. Si no, agrupa categorías o usa la corrección.</li>
+          <li>Confundir gl entre pruebas: ¡1 sola variable → k−1; dos variables → (r−1)(c−1)!</li>
+          <li>Marcar la fila de totales como "observada". Solo cuenta casillas reales, no los márgenes.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============ SECCIÓN MÍNIMOS CUADRADOS ============ -->
+  <div class="topic-card" id="minimos">
+    <div class="topic-header g2">
+      <div class="topic-icon"><i class="fas fa-chart-line"></i></div>
+      <div>
+        <h2 class="topic-title">Regresión por Mínimos Cuadrados</h2>
+        <p class="topic-subtitle">Recta de ajuste, residuos y cálculo paso a paso</p>
+      </div>
+    </div>
+    <div class="topic-content">
+
+      <div class="formula-box">
+        <div class="formula-label">Recta de regresión</div>
+        <div class="formula-content">
+          \[ \hat{y} = a + b\,x \qquad b = \frac{\sum (x_i - \bar{x})(y_i - \bar{y})}{\sum (x_i - \bar{x})^2} = \frac{n\sum xy - \sum x \sum y}{n\sum x^2 - (\sum x)^2} \qquad a = \bar{y} - b\,\bar{x} \]
+        </div>
+        <p style="text-align:center;font-size:.9em;color:var(--gray);">Mínimos cuadrados = minimizar la suma de los residuos al cuadrado Σ eᵢ² = Σ (yᵢ − ŷᵢ)².</p>
+      </div>
+
+      <div class="graph-card">
+        <h4><i class="fas fa-hand-pointer"></i> Ejemplo: horas de estudio vs nota</h4>
+        <p class="caption">Haz <strong>clic en la gráfica</strong> para agregar un punto (x = horas, y = nota). El doble clic borra el punto más cercano. La recta y los residuos se recalculan solos.</p>
+        <div id="lsPlot"></div>
+        <div class="controls">
+          <div class="control">
+            <label>Predecir para x =</label>
+            <input type="range" id="predSlider" min="1" max="12" step="0.5" value="7">
+            <span class="val violet" id="predVal">7.0 h</span>
+          </div>
+          <button class="btn btn-ghost" id="resetBtn" onclick="resetData()"><i class="fas fa-undo"></i> Restaurar datos</button>
+        </div>
+        <div class="stats-row">
+          <div class="stat-chip"><div class="label">Pendiente b</div><div class="num" id="statB">—</div></div>
+          <div class="stat-chip"><div class="label">Intercepto a</div><div class="num" id="statA">—</div></div>
+          <div class="stat-chip"><div class="label">r (correlación)</div><div class="num" id="statR">—</div></div>
+          <div class="stat-chip"><div class="label">ŷ(x predicha)</div><div class="num" id="statPred">—</div></div>
+        </div>
+      </div>
+
+      <div class="table-scroll">
+        <table class="data-table" id="calcTable">
+          <thead><tr><th>#</th><th>x (horas)</th><th>y (nota)</th><th>x²</th><th>xy</th><th>ŷ = a+bx</th><th>residuo e</th><th>e²</th></tr></thead>
+          <tbody id="calcTableBody"></tbody>
+        </table>
+      </div>
+
+      <div class="tip-box">
+        <h4><i class="fas fa-lightbulb"></i> Interpretando</h4>
+        <p><strong>b</strong> = cuánto sube la nota por cada hora extra de estudio. <strong>a</strong> = nota esperada con 0 horas. <strong>r</strong> cerca de +1 → relación positiva fuerte. El residuo es la distancia vertical entre tu punto y la recta.</p>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<footer class="footer">
+  <p>Gráficas interactivas de Estadística Inferencial · χ² y Mínimos Cuadrados</p>
+</footer>
+
+<script>
+// ============ Utilidades matemáticas ============
+function gamma(z){
+  const g=7, c=[0.99999999999980993,676.5203681218851,-1259.1392167224028,771.32342877765313,-176.61502916214059,12.507343278686905,-0.13857109526572012,9.9843695780195716e-6,1.5056327351493116e-7];
+  if(z<0.5) return Math.PI/(Math.sin(Math.PI*z)*gamma(1-z));
+  z-=1;
+  let x=c[0];
+  for(let i=1;i<g+2;i++) x+=c[i]/(z+i);
+  const t=z+g+0.5;
+  return Math.sqrt(2*Math.PI)*Math.pow(t,z+0.5)*Math.exp(-t)*x;
+}
+function chiPdf(x,k){
+  if(x<=0) return 0;
+  return Math.pow(x,k/2-1)*Math.exp(-x/2)/(Math.pow(2,k/2)*gamma(k/2));
+}
+function chiCdf(x,k){ // gamma incompleta regularizada P(k/2, x/2) por serie
+  const s=k/2, z=x/2;
+  let term=1/gamma(s+1), sum=term;
+  for(let m=1; m<400; m++){
+    term*=z/(s+m);
+    sum+=term;
+    if(term<1e-16*sum) break;
+  }
+  return Math.pow(z,s)*Math.exp(-z)*sum;
+}
+function chiQuantile(alpha,k){ // búsqueda binaria sobre la CDF
+  let lo=0, hi=k+10*Math.sqrt(2*k)+10;
+  for(let i=0;i<60;i++){
+    const mid=(lo+hi)/2;
+    if(chiCdf(mid,k) < 1-alpha) lo=mid; else hi=mid;
+  }
+  return (lo+hi)/2;
+}
+const fmt=(x,d)=>Number(x.toFixed(d===undefined?3:d));
+
+// ============ Dibujo SVG genérico ============
+const NS='http://www.w3.org/2000/svg';
+function svgEl(tag,attrs,parent){
+  const el=document.createElementNS(NS,tag);
+  for(const k in attrs) el.setAttribute(k,attrs[k]);
+  if(parent) parent.appendChild(el);
+  return el;
+}
+function drawAxes(svg,W,H,padL,padB,padT,xMax,yMax,xticks,yticks,opt){
+  opt=opt||{};
+  // area
+  svgEl('rect',{x:0,y:0,width:W,height:H,fill:'#fafbff'},svg);
+  // grid vertical
+  xticks.forEach(t=>{
+    const px=padL+t/xMax*(W-padL-30);
+    svgEl('line',{x1:px,y1:padT,x2:px,y2:H-padB,stroke:'#eef2ff','stroke-width':1},svg);
+  });
+  // grid horizontal
+  yticks.forEach(t=>{
+    const py=H-padB-t/yMax*(H-padB-padT);
+    svgEl('line',{x1:padL,y1:py,x2:W-30,y2:py,stroke:'#eef2ff','stroke-width':1},svg);
+  });
+  // axes
+  svgEl('line',{x1:padL,y1:H-padB,x2:W-30,y2:H-padB,stroke:'#64748b','stroke-width':2},svg);
+  svgEl('line',{x1:padL,y1:H-padB,x2:padL,y2:padT,stroke:'#64748b','stroke-width':2},svg);
+  // x ticks
+  xticks.forEach(t=>{
+    const px=padL+t/xMax*(W-padL-30);
+    svgEl('line',{x1:px,y1:H-padB,x2:px,y2:H-padB+5,stroke:'#64748b','stroke-width':1.5},svg);
+    svgEl('text',{x:px,y:H-padB+18,'text-anchor':'middle','font-size':12,fill:'#64748b'},svg).textContent=t;
+  });
+  // y ticks
+  yticks.forEach(t=>{
+    const py=H-padB-t/yMax*(H-padB-padT);
+    svgEl('line',{x1:padL-5,y1:py,x2:padL,y2:py,stroke:'#64748b','stroke-width':1.5},svg);
+    svgEl('text',{x:padL-8,y:py+4,'text-anchor':'end','font-size':12,fill:'#64748b'},svg).textContent=opt.yPrefix?opt.yPrefix+t:t;
+  });
+  return {x:(v)=>padL+v/xMax*(W-padL-30), y:(v)=>H-padB-v/yMax*(H-padB-padT), W, H, padL, padB};
+}
+
+// ============ GRÁFICA 1: familia de curvas χ² ============
+function drawChiFamilies(){
+  const W=1100,H=380,padL=52,padB=40,padT=25;
+  const xMax=40, yMax=0.60;
+  const svg=svgEl('svg',{viewBox:`0 0 ${W} ${H}`},document.getElementById('chiFamilies'));
+  const S=drawAxes(svg,W,H,padL,padB,padT,xMax,yMax,[0,5,10,15,20,25,30,35,40],[0,.1,.2,.3,.4,.5]);
+  const ks=[1,2,5,10,30], colors=['#ef4444','#f59e0b','#10b981','#3b82f6','#8b5cf6'];
+  ks.forEach((k,ci)=>{
+    let path='';
+    for(let x=0.05;x<=xMax;x+=0.25){
+      const px=S.x(x), py=S.y(chiPdf(x,k));
+      path+=(path?'L':'M')+px.toFixed(1)+','+py.toFixed(1);
+    }
+    // slight area fill under each curve
+    let area='';
+    for(let x=0.05;x<=xMax;x+=0.25){
+      const px=S.x(x), py=S.y(chiPdf(x,k));
+      area+=(area?'L':'M')+px.toFixed(1)+','+py.toFixed(1);
+    }
+    area+=`L${S.x(xMax)},${H-padB}L${S.x(0.05)},${H-padB}Z`;
+    svgEl('path',{d:area,fill:colors[ci],opacity:0.06},svg);
+    svgEl('path',{d:path,fill:'none',stroke:colors[ci],'stroke-width':2.5},svg);
+  });
+  svgEl('text',{x:W-36,y:padT+18,'text-anchor':'end','font-size':12,fill:'#64748b'},svg).textContent='x →';
+  svgEl('text',{x:padL+10,y:padT+18,'font-size':12,fill:'#64748b'},svg).textContent='f(x)';
+}
+
+// ============ GRÁFICA 2: área de rechazo interactiva ============
+function drawChiArea(){
+  const W=1100,H=380,padL=52,padB=40,padT=25;
+  const k=parseInt(document.getElementById('glSlider').value);
+  const alpha=parseInt(document.getElementById('alphaSlider').value)/100;
+  const xMax=Math.max(20,k+7*Math.sqrt(2*k));
+  const yMax=chiPdf(Math.max(0.6,k-2),k)*1.25;
+
+  document.getElementById('glVal').textContent=k;
+  document.getElementById('alphaVal').textContent=alpha.toFixed(2);
+  document.getElementById('meanVal').textContent=k;
+  document.getElementById('varVal').textContent=2*k;
+
+  const crit=chiQuantile(alpha,k);
+  document.getElementById('critVal').textContent=fmt(crit,3);
+
+  const box=document.getElementById('chiArea');
+  box.innerHTML='';
+  const svg=svgEl('svg',{viewBox:`0 0 ${W} ${H}`},box);
+  const S=drawAxes(svg,W,H,padL,padB,padT,xMax,yMax,[0,5,10,15,20,25,30,35,40].filter(t=>t<=xMax),[0,Math.round(yMax/2),Math.round(yMax*3/4),Math.round(yMax)]);
+
+  // curva completa
+  let path='';
+  for(let x=0.05;x<=xMax;x+=0.2){ const px=S.x(x),py=S.y(chiPdf(x,k)); path+=(path?'L':'M')+px.toFixed(1)+','+py.toFixed(1); }
+  svgEl('path',{d:path,fill:'none',stroke:'#4f46e5','stroke-width':3},svg);
+
+  // área de rechazo (cola derecha sobre el crítico)
+  if(crit<xMax){
+    let area=`M${S.x(crit).toFixed(1)},${S.y(0)}`;
+    for(let x=crit;x<=xMax;x+=0.2){ const px=S.x(x),py=S.y(chiPdf(x,k)); area+='L'+px.toFixed(1)+','+py.toFixed(1); }
+    area+=`L${S.x(xMax)},${H-padB}L${S.x(crit).toFixed(1)},${H-padB}Z`;
+    svgEl('path',{d:area,fill:'#ef4444',opacity:0.65},svg);
+    svgEl('line',{x1:S.x(crit),y1:padT,x2:S.x(crit),y2:H-padB,stroke:'#ef4444','stroke-width':2.5,'stroke-dasharray':'6,4'},svg);
+    const ptY=S.y(chiPdf(crit,k))*0.5;
+    svgEl('text',{x:S.x(crit)-10,y:H-padB-12,'text-anchor':'end','font-size':13,fill:'#dc2626','font-weight':700},svg).textContent='χ²='+fmt(crit,3);
+    const lbl=svgEl('text',{x:S.x(crit)+8,y:padT+26,'font-size':13,fill:'#dc2626','font-weight':700},svg);
+    lbl.textContent='Rechazo H₀ (α='+alpha.toFixed(2)+')';
+    svgEl('text',{x:S.x((crit+xMax)/2),y:H-padB-10,'text-anchor':'middle','font-size':12,fill:'#dc2626'},svg).textContent='cola derecha';
+    svgEl('text',{x:Math.min(S.x(xMax*0.35),S.x(crit)-14),y:H-padB-10,'text-anchor':'middle','font-size':12,fill:'#4f46e5'},svg).textContent='No rechazo (1−α)';
+  }
+  svgEl('text',{x:W-36,y:padT+18,'text-anchor':'end','font-size':12,fill:'#64748b'},svg).textContent='x →';
+}
+
+// ============ MÍNIMOS CUADRADOS ============
+let data=[{x:2,y:65},{x:3,y:70},{x:5,y:82},{x:6,y:86},{x:8,y:92},{x:9,y:95},{x:11,y:99}];
+const LS_W=1100, LS_H=460, LS_padL=60, LS_padB=48, LS_padT=30;
+const LX={min:0,max:12}, LY={min:50,max:105};
+
+function regLine(){
+  const n=data.length;
+  let sx=0,sy=0,sxy=0,sx2=0,sy2=0;
+  data.forEach(p=>{sx+=p.x;sy+=p.y;sxy+=p.x*p.y;sx2+=p.x*p.x;sy2+=p.y*p.y;});
+  const b=(n*sxy-sx*sy)/(n*sx2-sx*sx);
+  const a=(sy-b*sx)/n;
+  let ssRes=0, ssTot=0;
+  const my=sy/n;
+  data.forEach(p=>{const yh=a+b*p.x;ssRes+=(p.y-yh)**2;ssTot+=(p.y-my)**2;});
+  const r=Math.sqrt(Math.max(0,1-ssRes/ssTot))*Math.sign(b);
+  return {a,b,n,sx,sy,sxy,sx2,r,my};
+}
+
+function drawLS(){
+  const box=document.getElementById('lsPlot');
+  box.innerHTML='';
+  const svg=svgEl('svg',{viewBox:`0 0 ${LS_W} ${LS_H}`},box);
+  const xMax=LX.max, yMax=LY.max-LY.min;
+  const yTicks=[50,60,70,80,90,100];
+  const xTicks=[0,1,2,3,4,5,6,7,8,9,10,11,12];
+  const S=drawAxes(svg,LS_W,LS_H,LS_padL,LS_padB,LS_padT,xMax,yMax,xTicks,yTicks.slice(0,-1).map(t=>t-LY.min),{yPrefix:''});
+  const reg=regLine();
+
+  // recta de regresión
+  const x1=0,x2=12,y1=reg.a+reg.b*x1,y2=reg.a+reg.b*x2;
+  const clip=reg.y=0;
+  svgEl('line',{x1:S.x(x1),y1:S.y(y1-LY.min),x2:S.x(x2),y2:S.y(y2-LY.min),stroke:'#4f46e5','stroke-width':3.5},svg);
+
+  // residuos + puntos
+  data.forEach(p=>{
+    const yh=reg.a+reg.b*p.x;
+    const px=S.x(p.x), py=S.y(p.y-LY.min), pyh=S.y(yh-LY.min);
+    svgEl('line',{x1:px,y1:py,x2:px,y2:pyh,stroke:p.y>=yh?'#10b981':'#ef4444','stroke-width':2},svg);
+  });
+  data.forEach(p=>{
+    const px=S.x(p.x), py=S.y(p.y-LY.min);
+    const c=svgEl('circle',{cx:px,cy:py,r:7,fill:'#4f46e5',stroke:'#fff','stroke-width':2},svg);
+    const title=svgEl('title',{},svg); title.textContent=`(${p.x} h, ${p.y} pts)`;
+  });
+
+  // punto predicho
+  const pred=parseFloat(document.getElementById('predSlider').value);
+  const yp=reg.a+reg.b*pred;
+  document.getElementById('predVal').textContent=pred.toFixed(1)+' h';
+  const px=S.x(pred), py=S.y(yp-LY.min);
+  svgEl('line',{x1:S.x(pred),y1:S.y(LY.max-LY.min),x2:S.x(pred),y2:py,stroke:'#f59e0b','stroke-width':1.5,'stroke-dasharray':'4,4'},svg);
+  const pc=svgEl('circle',{cx:px,cy:py,r:9,fill:'none',stroke:'#f59e0b','stroke-width':3},svg);
+  svgEl('text',{x:Math.min(px+12,LS_W-60),y:py-12,'font-size':13,fill:'#b45309','font-weight':700},svg).textContent='ŷ='+fmt(yp,1);
+
+  // stats
+  document.getElementById('statB').textContent=fmt(reg.b,3);
+  document.getElementById('statA').textContent=fmt(reg.a,1);
+  document.getElementById('statR').textContent=fmt(reg.r,3);
+  document.getElementById('statPred').textContent=fmt(yp,1);
+
+  // tablas de cálculo
+  const tbody=document.getElementById('calcTableBody');
+  tbody.innerHTML='';
+  data.forEach((p,i)=>{const yh=reg.a+reg.b*p.x;
+    const tr=document.createElement('tr');
+    [i+1,p.x,p.y,p.x*p.x,p.x*p.y,fmt(yh,1),fmt(p.y-yh,2),fmt((p.y-yh)**2,2)].forEach(v=>{
+      const td=document.createElement('td'); td.textContent=v; tr.appendChild(td);
+    });
+tbody.appendChild(tr);
+  });
+}
+
+function resetData(){ data=[{x:2,y:65},{x:3,y:70},{x:5,y:82},{x:6,y:86},{x:8,y:92},{x:9,y:95},{x:11,y:99}]; document.getElementById('predSlider').value=7; drawLS(); }
+
+function lsPlotClick(e){
+  const box=document.getElementById('lsPlot');
+  const rect=box.getBoundingClientRect();
+  const svgR=100; // scale from viewBox scale
+  const vbX=LS_W/(rect.width||1);
+  const vbY=LS_H/(rect.height||1);
+  const x=((e.clientX-rect.left)*vbX - LS_padL)/(LS_W-LS_padL-30)*LX.max;
+  const y=LY.min + (LS_H-LS_padB - (e.clientY-rect.top)*vbY)/(LS_H-LS_padB-LS_padT)*(LY.max-LY.min);
+  const clampedX=Math.max(LX.min,Math.min(LX.max,Math.round(x*10)/10));
+  const clampedY=Math.max(LY.min,Math.min(LY.max,Math.round(y)));
+  data.push({x:clampedX,y:clampedY});
+  drawLS();
+}
+function lsPlotDouble(e){
+  const box=document.getElementById('lsPlot');
+  const rect=box.getBoundingClientRect();
+  const vbX=LS_W/(rect.width||1), vbY=LS_H/(rect.height||1);
+  const x=((e.clientX-rect.left)*vbX - LS_padL)/(LS_W-LS_padL-30)*LX.max;
+  const y=LY.min+(LS_H-LS_padB-(e.clientY-rect.top)*vbY)/(LS_H-LS_padB-LS_padT)*(LY.max-LY.min);
+  let best=-1, bd=1e9;
+  data.forEach((p,i)=>{const d=Math.hypot(p.x-x,p.y-y); if(d<bd){bd=d;best=i;}});
+  if(best>=0 && bd< (LY.max-LY.min)/12) data.splice(best,1);
+  drawLS();
+}
+
+// ============ Inicialización ============
+drawChiFamilies();
+drawChiArea();
+drawLS();
+document.getElementById('glSlider').addEventListener('input',drawChiArea);
+document.getElementById('alphaSlider').addEventListener('input',drawChiArea);
+document.getElementById('predSlider').addEventListener('input',drawLS);
+document.getElementById('lsPlot').addEventListener('click',lsPlotClick);
+document.getElementById('lsPlot').addEventListener('dblclick',lsPlotDouble);
+</script>
+</body>
+</html>

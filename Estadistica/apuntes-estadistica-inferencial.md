@@ -781,27 +781,648 @@ Es la probabilidad de obtener un resultado igual o más extremo que el observado
 
 ---
 
-## Tema 11: Pruebas paramétricas ⬜
+## Tema 11: Pruebas paramétricas ✅
 
-*Por agregar...*
+### ¿Qué son?
 
----
-
-## Tema 12: Pruebas no paramétricas ⬜
-
-*Por agregar...*
+Son pruebas de hipótesis que **asumen que la población sigue una distribución conocida** (normal, normal bivariada) y que los datos son de nivel de intervalo o razón. Permiten hacer inferencias más potentes cuando se cumplen los supuestos.
 
 ---
 
-## Tema 13: Distribución Chi-cuadrado ⬜
+### Intervalo de confianza para la media
 
-*Por agregar...*
+Un intervalo de confianza (IC) nos dice en qué rango probable se encuentra el parámetro poblacional.
+
+#### σ conocida → usa Z
+
+`IC = x̄ ± Z_(α/2) · (σ / √n)`
+
+#### σ desconocida → usa t
+
+`IC = x̄ ± t_(α/2, gl) · (s / √n)` con `gl = n − 1`
+
+**Ejemplo:** x̄ = 50, s = 8, n = 25, 95% confianza:
+- gl = 24, t_(0.025, 24) = 2.064
+- IC = 50 ± 2.064 · (8/√25) = 50 ± 3.30 = [46.70, 53.30]
 
 ---
 
-## Tema 14: Método de mínimos cuadrados ⬜
+### Intervalo de confianza para la proporción
 
-*Por agregar...*
+`IC = p̂ ± Z_(α/2) · √(p̂(1 − p̂) / n)`
+
+**Condiciones:** `n·p̂ ≥ 10` y `n·(1−p̂) ≥ 10`
+
+**Ejemplo:** p̂ = 0.40, n = 200, 95% confianza:
+- IC = 0.40 ± 1.96 · √(0.40·0.60/200) = 0.40 ± 0.068 = [0.332, 0.468]
+
+---
+
+### Prueba Z para una media (σ conocida)
+
+**Pasos:**
+1. H₀: μ = μ₀, H₁: μ ≠ μ₀ (o cola izquierda/derecha)
+2. Estadístico: `Z = (x̄ − μ₀) / (σ / √n)`
+3. Comparar con valor crítico o calcular valor p
+4. Decidir: si p ≤ α → rechazar H₀
+
+**Ejemplo:** μ₀ = 100, σ = 15, n = 36, x̄ = 104.5, α = 0.05
+- Z = (104.5 − 100) / (15/√36) = 4.5 / 2.5 = 1.80
+- Valor crítico bilateral: ±1.96
+- 1.80 < 1.96 → No rechazar H₀
+
+---
+
+### Prueba t para una media (σ desconocida)
+
+**Cuándo usar:** σ desconocida, población normal o n ≥ 30 (TLC).
+
+**Estadístico:**
+`t = (x̄ − μ₀) / (s / √n)` con `gl = n − 1`
+
+**Ejemplo:** μ₀ = 50, s = 10, n = 16, x̄ = 46, α = 0.05 (cola izquierda)
+- t = (46 − 50) / (10/√16) = −4 / 2.5 = −1.60
+- gl = 15, valor crítico t_(0.05, 15) = −1.753
+- −1.60 > −1.753 → No rechazar H₀
+
+---
+
+### Prueba Z para una proporción
+
+**Estadístico:**
+`Z = (p̂ − p₀) / √(p₀(1 − p₀) / n)`
+
+**Condiciones:** `n·p₀ ≥ 10` y `n·(1−p₀) ≥ 10`
+
+**Ejemplo:** p₀ = 0.30, n = 100, p̂ = 0.22, α = 0.05 (cola izquierda)
+- Z = (0.22 − 0.30) / √(0.30·0.70/100) = −0.08 / 0.0458 = −1.747
+- Valor crítico: −1.645
+- −1.747 < −1.645 → Rechazar H₀
+
+---
+
+### Muestras pareadas (datos dependientes)
+
+Se usa cuando las observaciones vienen en pares (antes/despues, izquierda/derecha).
+
+**Estadístico:**
+`t = d̄ / (s_d / √n)` con `gl = n − 1`
+
+Donde `d̄` = media de diferencias, `s_d` = desviación estándar de diferencias.
+
+**Ejemplo:** 6 pacientes, peso antes y después de dieta:
+- Diferencias d: [−3, −2, −5, −1, −4, −2]
+- d̄ = −2.83, s_d = 1.47
+- t = −2.83 / (1.47/√6) = −2.83 / 0.60 = −4.72
+- gl = 5, t_(0.025, 5) = 2.571
+- |−4.72| > 2.571 → Rechazar H₀ (la dieta tiene efecto)
+
+---
+
+### Comparación de dos medias independientes
+
+**σ conocidas (o n grandes) → Z:**
+`Z = (x̄₁ − x̄₂) / √(σ₁²/n₁ + σ₂²/n₂)`
+
+**σ desconocidas pero iguales → t con gl combinados:**
+`t = (x̄₁ − x̄₂) / √(s_p²(1/n₁ + 1/n₂))`
+
+`s_p² = ((n₁−1)s₁² + (n₂−1)s₂²) / (n₁ + n₂ − 2)`
+
+`gl = n₁ + n₂ − 2`
+
+**σ desconocidas y diferentes → t de Welch:**
+`gl ≈ (s₁²/n₁ + s₂²/n₂)² / [(s₁²/n₁)²/(n₁−1) + (s₂²/n₂)²/(n₂−1)]`
+
+**Ejemplo (igualdad de varianzas):**
+- Grupo 1: n₁ = 20, x̄₁ = 75, s₁ = 8
+- Grupo 2: n₂ = 25, x̄₂ = 80, s₂ = 10
+- s_p² = (19·64 + 24·100) / (20+25−2) = (1216+2400)/43 = 84.09
+- t = (75−80) / √(84.09·(1/20+1/25)) = −5 / √(84.09·0.09) = −5 / 2.76 = −1.81
+- gl = 43, t_(0.025, 43) ≈ 2.016
+- |−1.81| < 2.016 → No rechazar H₀
+
+---
+
+### ANOVA de una vía (Analysis of Variance)
+
+**¿Para qué?** Comparar **3 o más medias** simultáneamente.
+
+**Hipótesis:**
+- H₀: μ₁ = μ₂ = … = μ_k
+- H₁: Al menos una media es diferente
+
+**Estadístico F:**
+`F = CM_entre / CM_dentro`
+
+- `CM_entre = SC_entre / (k − 1)` (variación entre grupos)
+- `CM_dentro = SC_dentro / (N − k)` (variación dentro de los grupos)
+- `SC_total = SC_entre + SC_dentro`
+
+**SC_entre = Σ nᵢ · (x̄ᵢ − x̄̄)²**
+
+**SC_dentro = Σ (nᵢ − 1) · sᵢ²**
+
+**Condiciones:**
+1. Poblaciones normales
+2. Varianzas iguales (homocedasticidad)
+3. Muestras independientes
+
+**Regla:** Si F observado > F crítico (o p ≤ α) → Rechazar H₀
+
+**Nota:** ANOVA solo dice "hay diferencia" pero no cuáles grupos difieren. Para eso se usan pruebas post-hoc (Tukey, Bonferroni).
+
+---
+
+### Regresión lineal simple
+
+**Modelo:** `Y = β₀ + β₁X + ε`
+
+- `β₀`: intercepto (valor de Y cuando X = 0)
+- `β₁`: pendiente (cambio en Y por cada unidad de X)
+- `ε`: error (ruido aleatorio)
+
+**Estimadores MCO:**
+- `β̂₁ = Σ(xᵢ − x̄)(yᵢ − ȳ) / Σ(xᵢ − x̄)²`
+- `β̂₀ = ȳ − β̂₁ · x̄`
+
+**Ecuación estimada:** `ŷ = β̂₀ + β̂₁ · x`
+
+**Ejemplo:** X = [1, 2, 3, 4, 5], Y = [2, 4, 5, 4, 5]
+- x̄ = 3, ȳ = 4
+- Σ(xᵢ−x̄)(yᵢ−ȳ) = (−2)(−2)+(−1)(0)+(0)(1)+(1)(0)+(2)(1) = 4+0+0+0+2 = 6
+- Σ(xᵢ−x̄)² = 4+1+0+1+4 = 10
+- β̂₁ = 6/10 = 0.6
+- β̂₀ = 4 − 0.6·3 = 2.2
+- ŷ = 2.2 + 0.6x
+
+---
+
+### Correlación de Pearson (r)
+
+Mide la **fuerza y dirección** de la relación lineal entre dos variables.
+
+`r = Σ(xᵢ − x̄)(yᵢ − ȳ) / √[Σ(xᵢ − x̄)² · Σ(yᵢ − ȳ)²]`
+
+| Valor de r | Interpretación |
+|------------|----------------|
+| r = 1 | Correlación positiva perfecta |
+| 0.7 ≤ r < 1 | Correlación positiva fuerte |
+| 0.3 ≤ r < 0.7 | Correlación positiva moderada |
+| 0 ≤ r < 0.3 | Correlación positiva débil |
+| r = 0 | Sin correlación lineal |
+
+**Coeficiente de determinación R²:**
+- `R² = r²`
+- Proporción de la varianza de Y explicada por X
+- Si R² = 0.81 → el 81% de la variación de Y se explica por X
+
+**Ejemplo del mismo dataset:**
+- Σ(yᵢ−ȳ)² = 4+0+1+0+1 = 6
+- r = 6 / √(10·6) = 6 / 7.746 = 0.775
+- R² = 0.60 → el 60% de la varianza de Y se explica por X
+
+---
+
+### Resumen: ¿Qué prueba usar?
+
+| Situación | Prueba |
+|-----------|--------|
+| 1 media, σ conocida | Z |
+| 1 media, σ desconocida | t de Student |
+| 2 medias independientes, σ conocidas | Z |
+| 2 medias independientes, σ desconocidas | t (Welch o pooled) |
+| 2 medias pareadas | t pareada |
+| 3+ medias | ANOVA |
+| 1 proporción | Z proporción |
+| Relación lineal 2 variables | Regresión + Pearson |
+
+---
+
+## Tema 12: Pruebas no paramétricas ✅
+
+### ¿Qué son?
+
+Son pruebas que **no asumen una distribución específica** para la población. Son alternativas a las pruebas paramétricas cuando:
+- Los datos **no son normales**
+- La escala es **ordinal** (rangos, clasificaciones)
+- Hay **outliers** extremos
+- El tamaño de muestra es **muy pequeño**
+
+**Ventaja:** Más robustas y versátiles.
+**Desventaja:** Menos potentes que las paramétricas cuando los supuestos se cumplen.
+
+---
+
+### ¿Cuándo usar no paramétricas?
+
+| Situación | Paramétrica | No paramétrica |
+|-----------|-------------|----------------|
+| 1 media, normal | t | Wilcoxon (signos/rangos) |
+| 2 medias independientes, normal | t | Mann-Whitney U |
+| 2 medias pareadas, normal | t pareada | Wilcoxon pareada |
+| 3+ medias, normal | ANOVA | Kruskal-Wallis |
+| Bondad de ajuste | — | Chi-cuadrado |
+| Independencia 2 variables categóricas | — | Chi-cuadrado |
+
+---
+
+### Prueba de Chi-cuadrado de bondad de ajuste
+
+**¿Para qué?** Verificar si los datos **siguen una distribución esperada**.
+
+**Hipótesis:**
+- H₀: Los datos siguen la distribución esperada
+- H₁: Los datos NO siguen la distribución esperada
+
+**Estadístico:**
+`χ² = Σ (Oᵢ − Eᵢ)² / Eᵢ`
+
+- Oᵢ = frecuencia observada
+- Eᵢ = frecuencia esperada
+- gl = k − 1 (k = número de categorías)
+
+**Ejemplo:** Se lanza un dado 120 veces. ¿Es justo?
+- Esperado: 20 por cada cara (120/6)
+- Observado: [18, 22, 19, 21, 17, 23]
+- χ² = (18−20)²/20 + (22−20)²/20 + … + (23−20)²/20
+- χ² = 4/20 + 4/20 + 1/20 + 1/20 + 9/20 + 9/20 = 28/20 = 1.40
+- gl = 5, valor crítico χ²_(0.05, 5) = 11.07
+- 1.40 < 11.07 → No rechazar H₀ (el dado parece justo)
+
+---
+
+### Prueba de Chi-cuadrado de independencia
+
+**¿Para qué?** Verificar si **dos variables categóricas son independientes**.
+
+**Hipótesis:**
+- H₀: Las variables son independientes
+- H₁: Las variables NO son independientes
+
+**Frecuencias esperadas:**
+`Eᵢⱼ = (fila_total · columna_total) / gran_total`
+
+**Estadístico:** `χ² = Σ (Oᵢⱼ − Eᵢⱼ)² / Eᵢⱼ`
+
+**gl = (filas − 1) · (columnas − 1)**
+
+**Ejemplo:** ¿El género influye en la preferencia de color?
+
+|  | Rojo | Azul | Verde | Total |
+|--|------|------|-------|-------|
+| Hombre | 30 (24) | 20 (24) | 10 (12) | 60 |
+| Mujer | 18 (24) | 28 (24) | 14 (12) | 60 |
+| Total | 48 | 48 | 24 | 120 |
+
+- χ² = (30−24)²/24 + (20−24)²/24 + (10−12)²/12 + (18−24)²/24 + (28−24)²/24 + (14−12)²/12
+- χ² = 36/24 + 16/24 + 4/12 + 36/24 + 16/24 + 4/12 = 1.5 + 0.67 + 0.33 + 1.5 + 0.67 + 0.33 = 5.0
+- gl = (2−1)·(3−1) = 2
+- Valor crítico χ²_(0.05, 2) = 5.99
+- 5.0 < 5.99 → No rechazar H₀
+
+---
+
+### Prueba de Wilcoxon (muestras pareadas)
+
+**Alternativa no paramétrica a la t pareada.**
+
+**Procedimiento:**
+1. Calcular diferencias dᵢ = xᵢ − yᵢ
+2. Eliminar diferencias = 0
+3. Asignar rangos a las diferencias absolutas |dᵢ|
+4. Sumar rangos positivos (T⁺) y negativos (T⁻)
+5. El estadístico T = min(T⁺, T⁻)
+6. Comparar con tabla de valores críticos
+
+**Cuándo usar:** Datos ordinales o escalas no normales en muestras pareadas.
+
+---
+
+### Prueba de Mann-Whitney U (dos muestras independientes)
+
+**Alternativa no paramétrica a la t para dos muestras independientes.**
+
+**Procedimiento:**
+1. Combinar ambas muestras y asignar rangos
+2. Calcular U para cada grupo:
+   - `U₁ = n₁·n₂ + n₁(n₁+1)/2 − R₁`
+   - `U₂ = n₁·n₂ + n₂(n₂+1)/2 − R₂`
+3. El estadístico U = min(U₁, U₂)
+4. Comparar con tabla de valores críticos
+
+**Cuándo usar:** Comparar 2 grupos con datos ordinales o no normales.
+
+---
+
+### Prueba de Kruskal-Wallis (3+ muestras)
+
+**Alternativa no paramétrica al ANOVA de una vía.**
+
+**Hipótesis:**
+- H₀: Las distribuciones de los k grupos son iguales
+- H₁: Al menos una distribución es diferente
+
+**Estadístico:**
+`H = [12 / (N(N+1))] · Σ (Rᵢ² / nᵢ) − 3(N+1)`
+
+Donde Rᵢ = suma de rangos del grupo i, N = total de observaciones.
+
+**Distribución:** χ² con `gl = k − 1` (cuando nᵢ ≥ 5)
+
+**Ejemplo:** 3 tratamientos, n = 5 cada uno, rangos:
+- Grupo 1: R₁ = 42, n₁ = 5
+- Grupo 2: R₂ = 55, n₂ = 5
+- Grupo 3: R₃ = 23, n₃ = 5
+- N = 15
+- H = [12/(15·16)] · (42²/5 + 55²/5 + 23²/5) − 3·16
+- H = 0.05 · (352.8 + 605 + 105.8) − 48 = 0.05 · 1063.6 − 48 = 5.18
+- gl = 2, χ²_(0.05, 2) = 5.99
+- 5.18 < 5.99 → No rechazar H₀
+
+---
+
+### Resumen: ¿Qué prueba no paramétrica usar?
+
+| Situación | Prueba no paramétrica | Paramétrica equivalente |
+|-----------|----------------------|------------------------|
+| 1 muestra, mediana | Wilcoxon (signos) | t |
+| 2 muestras pareadas | Wilcoxon pareada | t pareada |
+| 2 muestras independientes | Mann-Whitney U | t independiente |
+| 3+ muestras independientes | Kruskal-Wallis | ANOVA |
+| Bondad de ajuste | Chi-cuadrado | — |
+| Independencia 2 variables | Chi-cuadrado | — |
+
+---
+
+## Tema 13: Distribución Chi-cuadrado ✅
+
+### Definición
+
+Si `Z₁, Z₂, …, Z_n` son variables normales estándar independientes, entonces:
+
+`χ² = Z₁² + Z₂² + … + Z_n²`
+
+sigue una distribución Chi-cuadrado con **n grados de libertad**.
+
+**También se define como:**
+`χ² = Σ (Oᵢ − Eᵢ)² / Eᵢ`
+
+---
+
+### Propiedades
+
+| Propiedad | Valor |
+|-----------|-------|
+| Valores posibles | Solo positivos (0 a ∞) |
+| Forma | Asimétrica (cola derecha más larga) |
+| Media | gl |
+| Varianza | 2·gl |
+| Suma de χ² | Si X ~ χ²(m) e Y ~ χ²(n) independientes, entonces X + Y ~ χ²(m+n) |
+
+---
+
+### Forma de la curva según gl
+
+| gl | Forma |
+|----|-------|
+| 1 | Muy sesgada a la derecha, asintótica al eje Y |
+| 2 | Decreciente desde el origen |
+| 3−30 | Asemeja una campana pero asimétrica |
+| > 30 | Se aproxima a una normal |
+
+---
+
+### Tabla de valores críticos
+
+Para un nivel de significancia α, el valor crítico χ²_(α, gl) es tal que `P(χ² > χ²_crítico) = α`.
+
+**Valores comunes:**
+
+| gl | χ²_(0.05) | χ²_(0.01) |
+|----|-----------|-----------|
+| 1 | 3.84 | 6.63 |
+| 2 | 5.99 | 9.21 |
+| 3 | 7.81 | 11.34 |
+| 5 | 11.07 | 15.09 |
+| 10 | 18.31 | 23.21 |
+| 15 | 25.00 | 30.58 |
+| 20 | 31.41 | 37.57 |
+
+---
+
+### Relación con la varianza muestral
+
+Si `X₁, …, X_n` ~ N(μ, σ²), entonces:
+
+`χ² = (n − 1) · s² / σ² ~ χ²(n − 1)`
+
+**Aplicación:** Construir intervalo de confianza para σ²:
+
+`IC: [(n−1)s² / χ²_(α/2, gl), (n−1)s² / χ²_(1−α/2, gl)]`
+
+**Ejemplo:** n = 16, s² = 6, 95% confianza:
+- gl = 15
+- χ²_(0.025, 15) = 27.49
+- χ²_(0.975, 15) = 6.26
+- IC = [15·6/27.49, 15·6/6.26] = [3.27, 14.38]
+
+---
+
+### Prueba de bondad de ajuste (detalle)
+
+**Pasos completos:**
+1. **Definir H₀:** Los datos siguen la distribución D
+2. **Calcular frecuencias esperadas:** Eᵢ = n · P(X = i según D)
+3. **Verificar condición:** Todas las Eᵢ ≥ 5 (si no, agrupar categorías)
+4. **Calcular χ²:** `χ² = Σ (Oᵢ − Eᵢ)² / Eᵢ`
+5. **gl:** k − 1 − número de parámetros estimados
+6. **Comparar:** Si χ² > χ²_crítico → rechazar H₀
+
+---
+
+### Prueba de independencia (detalle)
+
+**Ejemplo:** ¿Relación entre nivel educativo y satisfacción laboral?
+
+|  | Baja | Media | Alta | Total |
+|--|------|-------|------|-------|
+| Secundaria | 30 | 20 | 10 | 60 |
+| Universitaria | 15 | 25 | 20 | 60 |
+| Posgrado | 5 | 15 | 40 | 60 |
+| Total | 50 | 60 | 70 | 180 |
+
+**Frecuencias esperadas (ejemplo):**
+- E₁₁ = 60·50/180 = 16.67
+- E₁₂ = 60·60/180 = 20.00
+- E₁₃ = 60·70/180 = 23.33
+- … (se calculan todas)
+
+**gl = (3−1)·(3−1) = 4**
+
+**Resultado hipotético:** χ² = 35.2, χ²_(0.05, 4) = 9.49
+→ 35.2 > 9.49 → Rechazar H₀ (hay relación entre educación y satisfacción)
+
+---
+
+### Errores comunes al usar Chi-cuadrado
+
+| Error | Consecuencia |
+|-------|-------------|
+| Eᵢ < 5 en alguna celda | La aproximación χ² no es válida |
+| Datos dependientes | Chi-cuadrado no aplica (usar McNemar) |
+| Confundir bondad de ajuste con independencia | Son pruebas diferentes con diferentes H₀ |
+
+---
+
+## Tema 14: Método de mínimos cuadrados ✅
+
+### Idea central
+
+El **Método de Mínimos Cuadrados Ordinarios (MCO)** busca encontrar la recta que **minimiza la suma de los cuadrados de los residuos** (las distancias verticales entre los datos y la recta).
+
+`Minimizar: S = Σ (yᵢ − ŷᵢ)²`
+
+Donde `ŷᵢ = β̂₀ + β̂₁ · xᵢ` es el valor predicho.
+
+---
+
+### Derivación de los estimadores
+
+Para encontrar β̂₀ y β̂₁, se derivan las ecuaciones normales (derivadas parciales = 0):
+
+**Pendiente:**
+`β̂₁ = Σ(xᵢ − x̄)(yᵢ − ȳ) / Σ(xᵢ − x̄)²`
+
+También se puede escribir como:
+`β̂₁ = [n·Σxᵢyᵢ − Σxᵢ·Σyᵢ] / [n·Σxᵢ² − (Σxᵢ)²]`
+
+**Intercepto:**
+`β̂₀ = ȳ − β̂₁ · x̄`
+
+---
+
+### Ejemplo paso a paso
+
+Datos: X = [1, 2, 3, 4, 5], Y = [2, 4, 5, 4, 5]
+
+| i | xᵢ | yᵢ | xᵢ·yᵢ | xᵢ² | yᵢ² |
+|---|-----|-----|--------|------|------|
+| 1 | 1 | 2 | 2 | 1 | 4 |
+| 2 | 2 | 4 | 8 | 4 | 16 |
+| 3 | 3 | 5 | 15 | 9 | 25 |
+| 4 | 4 | 4 | 16 | 16 | 16 |
+| 5 | 5 | 5 | 25 | 25 | 25 |
+| **Σ** | **15** | **20** | **66** | **55** | **86** |
+
+- x̄ = 15/5 = 3
+- ȳ = 20/5 = 4
+- β̂₁ = (5·66 − 15·20) / (5·55 − 15²) = (330 − 300) / (275 − 225) = 30/50 = 0.6
+- β̂₀ = 4 − 0.6·3 = 4 − 1.8 = 2.2
+
+**Recta de regresión:** `ŷ = 2.2 + 0.6x`
+
+**Interpretación:** Por cada unidad que aumenta X, Y aumenta en promedio 0.6 unidades. Cuando X = 0, Y = 2.2.
+
+---
+
+### Supuestos del modelo MCO
+
+| Supuesto | Qué significa | Cómo verificarlo |
+|----------|---------------|------------------|
+| **Linealidad** | La relación entre X e Y es lineal | Gráfico de dispersión, residuos vs. predichos |
+| **Independencia** | Los residuos son independientes | Orden de recolección, test de Durbin-Watson |
+| **Homocedasticidad** | Varianza constante de los residuos | Gráfico de residuos vs. predichos (no debe haber embudo) |
+| **Normalidad de residuos** | Los residuos ~ N(0, σ²) | QQ-plot, test de Shapiro-Wilk |
+| **Exogeneidad** | X no está correlacionado con ε | Correlación residual ≈ 0 |
+
+---
+
+### Coeficiente de determinación (R²)
+
+**¿Qué mide?** La proporción de la varianza total de Y que es explicada por el modelo.
+
+`R² = 1 − (SC_res / SC_tot)`
+
+Donde:
+- `SC_res = Σ(yᵢ − ŷᵢ)²` (suma de cuadrados residual)
+- `SC_tot = Σ(yᵢ − ȳ)²` (suma de cuadrados total)
+- `SC_reg = Σ(ŷᵢ − ȳ)²` (suma de cuadrados de regresión)
+- `SC_tot = SC_reg + SC_res`
+
+**Ejemplo:**
+- SC_tot = Σ(yᵢ − 4)² = 4+0+1+0+1 = 6
+- ŷ = [2.8, 3.4, 4.0, 4.6, 5.2]
+- SC_res = (2−2.8)²+(4−3.4)²+(5−4)²+(4−4.6)²+(5−5.2)² = 0.64+0.36+1+0.36+0.04 = 2.4
+- R² = 1 − 2.4/6 = 1 − 0.4 = 0.60
+
+**Interpretación:** El 60% de la variación de Y se explica por X.
+
+---
+
+### R² ajustado
+
+Cuando se agregan variables, R² siempre aumenta. El **R² ajustado** penaliza por variables innecesarias:
+
+`R²_ajustado = 1 − [(1 − R²)(n − 1) / (n − k − 1)]`
+
+Donde k = número de predictores.
+
+---
+
+### Coeficiente de correlación (r)
+
+`r = β̂₁ · (sₓ / sᵧ)`
+
+O directamente:
+`r = Σ(xᵢ − x̄)(yᵢ − ȳ) / √[Σ(xᵢ − x̄)² · Σ(yᵢ − ȳ)²]`
+
+**Propiedades:**
+- −1 ≤ r ≤ 1
+- r > 0: correlación positiva
+- r < 0: correlación negativa
+- |r| = 1: correlación perfecta
+- r² = R² (en regresión simple)
+
+---
+
+### Intervalos de confianza para los parámetros
+
+**Para β̂₁:**
+`IC: β̂₁ ± t_(α/2, n−2) · SE(β̂₁)`
+
+Donde `SE(β̂₁) = s_e / √Σ(xᵢ − x̄)²`
+
+**Para β̂₀:**
+`IC: β̂₀ ± t_(α/2, n−2) · SE(β̂₀)`
+
+Donde `s_e = √(SC_res / (n−2))` (error estándar de la regresión)
+
+---
+
+### Prueba de significancia de β̂₁
+
+**Hipótesis:**
+- H₀: β₁ = 0 (X no tiene efecto lineal sobre Y)
+- H₁: β₁ ≠ 0 (X sí tiene efecto lineal sobre Y)
+
+**Estadístico:**
+`t = β̂₁ / SE(β̂₁)` con `gl = n − 2`
+
+Si p ≤ α → Rechazar H₀ → La regresión es significativa.
+
+---
+
+### Resumen del Tema 14
+
+| Concepto | Fórmula/Descripción |
+|----------|---------------------|
+| Modelo | `ŷ = β̂₀ + β̂₁x` |
+| Pendiente | `β̂₁ = Σ(xᵢ−x̄)(yᵢ−ȳ) / Σ(xᵢ−x̄)²` |
+| Intercepto | `β̂₀ = ȳ − β̂₁x̄` |
+| R² | `1 − SC_res/SC_tot` (proporción de varianza explicada) |
+| Supuestos | Linealidad, independencia, homocedasticidad, normalidad |
+| Significancia | `t = β̂₁/SE(β̂₁)` → rechazar si p ≤ α |
 
 ---
 

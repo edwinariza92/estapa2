@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Guía Rápida - Fórmulas de Estadística Inferencial</title>
+<style>
+  @page { size: A4; margin: 1.5cm; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 10px; line-height: 1.4; color: #1a1a1a; background: #fff; padding: 15px; }
+  h1 { text-align: center; font-size: 16px; color: #1a5276; margin-bottom: 5px; border-bottom: 2px solid #1a5276; padding-bottom: 5px; }
+  h2 { font-size: 12px; color: #fff; background: #2c3e50; padding: 4px 8px; margin: 8px 0 4px 0; border-radius: 3px; }
+  h3 { font-size: 10.5px; color: #1a5276; margin: 5px 0 3px 0; border-left: 3px solid #3498db; padding-left: 6px; }
+  table { width: 100%; border-collapse: collapse; margin: 4px 0 8px 0; font-size: 9.5px; }
+  th { background: #34495e; color: #fff; padding: 3px 5px; text-align: left; font-weight: 600; }
+  td { padding: 3px 5px; border-bottom: 1px solid #ddd; }
+  tr:nth-child(even) { background: #f8f9fa; }
+  .formula { background: #eaf2f8; padding: 4px 8px; border-left: 3px solid #2980b9; margin: 3px 0; font-family: 'Courier New', monospace; font-size: 10px; font-weight: bold; }
+  .alerta { background: #fdedec; padding: 4px 8px; border-left: 3px solid #e74c3c; margin: 3px 0; font-size: 9.5px; }
+  .tip { background: #eafaf1; padding: 4px 8px; border-left: 3px solid #27ae60; margin: 3px 0; font-size: 9.5px; }
+  .decision { background: #fef9e7; padding: 4px 8px; border-left: 3px solid #f39c12; margin: 3px 0; font-size: 9.5px; }
+  .col2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .col3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+  ul { margin: 2px 0 4px 18px; font-size: 9.5px; }
+  li { margin: 1px 0; }
+  .pagebreak { page-break-before: always; }
+  .compact td, .compact th { padding: 2px 4px; font-size: 9px; }
+  .highlight { background: #fff3cd; padding: 1px 3px; border-radius: 2px; }
+  strong { color: #1a5276; }
+</style>
+</head>
+<body>
+
+<h1>GUÍA RÁPIDA — FÓRMULAS DE ESTADÍSTICA INFERENCIAL</h1>
+
+<!-- ==================== SECCIÓN 1: PROBABILIDAD ==================== -->
+<h2>1. PROBABILIDAD</h2>
+
+<div class="col2">
+<div>
+<h3>Conceptos básicos</h3>
+<div class="formula">P(A) = |A| / |Ω| (Laplace)</div>
+<div class="formula">P(Aᶜ) = 1 − P(A)</div>
+<div class="formula">P(A ∪ B) = P(A) + P(B) − P(A ∩ B)</div>
+<div class="formula">P(A|B) = P(A ∩ B) / P(B)</div>
+<div class="formula">P(A ∩ B) = P(A|B) · P(B)</div>
+<div class="formula">Independencia: P(A ∩ B) = P(A) · P(B)</div>
+</div>
+<div>
+<h3>Teorema de Bayes</h3>
+<div class="formula">P(Bⱼ|A) = P(Bⱼ)·P(A|Bⱼ) / Σ P(Bᵢ)·P(A|Bᵢ)</div>
+<div class="tip"><strong>¿Cuándo?</strong> Cuando tienes "causas" B₁,B₂,... y evidencia A. Quieres P(cause|evidencia).</div>
+<div class="formula">P(A) = Σ P(Bᵢ)·P(A|Bᵢ) (Prob. total)</div>
+</div>
+</div>
+
+<!-- ==================== SECCIÓN 2: DISTRIBUCIONES ==================== -->
+<h2>2. DISTRIBUCIONES DE PROBABILIDAD</h2>
+
+<table class="compact">
+<tr><th>Distribución</th><th>Cuándo usarla</th><th>Fórmula clave</th><th>E[X]</th><th>Var(X)</th></tr>
+<tr><td><strong>Bernoulli</strong> Ber(p)</td><td>1 intento, 2 resultados</td><td>P(X=1)=p, P(X=0)=1−p</td><td>p</td><td>p(1−p)</td></tr>
+<tr><td><strong>Binomial</strong> Bin(n,p)</td><td>n intentos, contar éxitos</td><td>P(X=k)=C(n,k)·pᵏ·(1−p)ⁿ⁻ᵏ</td><td>np</td><td>np(1−p)</td></tr>
+<tr><td><strong>Poisson</strong> Poi(λ)</td><td>Eventos raros, ritmo constante</td><td>f(x)=e⁻λ·λˣ/x!</td><td>λ</td><td>λ</td></tr>
+<tr><td><strong>Geométrica</strong> Geom(p)</td><td>Intentos hasta 1er éxito</td><td>f(x)=(1−p)ˣ⁻¹·p</td><td>1/p</td><td>(1−p)/p²</td></tr>
+<tr><td><strong>Uniforme</strong> U(a,b)</td><td>Igual prob. en intervalo</td><td>f(x)=1/(b−a)</td><td>(a+b)/2</td><td>(b−a)²/12</td></tr>
+<tr><td><strong>Exponencial</strong> Exp(λ)</td><td>Tiempo hasta evento</td><td>f(x)=λ·e⁻λˣ</td><td>1/λ</td><td>1/λ²</td></tr>
+<tr><td><strong>Normal</strong> N(μ,σ)</td><td>Muchos factores que se suman</td><td>Z=(X−μ)/σ</td><td>μ</td><td>σ²</td></tr>
+</table>
+
+<div class="tip"><strong>Regla 68-95-99.7:</strong> μ±σ → 68% | μ±2σ → 95% | μ±3σ → 99.7%</div>
+
+<!-- ==================== SECCIÓN 3: DISTRIBUCIONES MUESTRALES ==================== -->
+<h2>3. DISTRIBUCIONES MUESTRALES</h2>
+
+<div class="col2">
+<div>
+<h3>¿Qué distribución usar?</h3>
+<table class="compact">
+<tr><th>Situación</th><th>Distribución</th><th>Estadístico</th></tr>
+<tr><td>σ conocida</td><td><strong>Z (Normal)</strong></td><td>Z = (x̄−μ)/(σ/√n)</td></tr>
+<tr><td>σ desconocida</td><td><strong>t de Student</strong></td><td>t = (x̄−μ)/(s/√n), gl=n−1</td></tr>
+<tr><td>Inferir σ²</td><td><strong>χ²</strong></td><td>χ²=(n−1)s²/σ², gl=n−1</td></tr>
+<tr><td>Comparar σ₁² y σ₂²</td><td><strong>F (Fisher)</strong></td><td>F=s₁²/s₂², gl₁=n₁−1, gl₂=n₂−1</td></tr>
+</table>
+</div>
+<div>
+<h3>Error estándar</h3>
+<div class="formula">σ_X̄ = σ/√n (de la media)</div>
+<div class="formula">σ_p̂ = √(p(1−p)/n) (de la proporción)</div>
+<h3>Tamaño de muestra</h3>
+<div class="formula">n = (Z·σ/E)²</div>
+<table class="compact">
+<tr><th>Confianza</th><th>Z</th></tr>
+<tr><td>90%</td><td>1.645</td></tr>
+<tr><td>95%</td><td>1.96</td></tr>
+<tr><td>99%</td><td>2.576</td></tr>
+</table>
+</div>
+</div>
+
+<!-- ==================== SECCIÓN 4: HIPÓTESIS ==================== -->
+<h2>4. HIPÓTESIS Y PRUEBAS DE HIPÓTESIS</h2>
+
+<div class="col2">
+<div>
+<h3>Reglas de decisión</h3>
+<div class="decision"><strong>Si p ≤ α → Rechazar H₀</strong><br>Si p > α → No rechazar H₀</div>
+<div class="decision"><strong>Si χ²_calc > χ²_crítico → Rechazar H₀</strong><br>Si χ²_calc ≤ χ²_crítico → No rechazar H₀</div>
+<div class="decision"><strong>Si |Z_calc| > Z_crítico → Rechazar H₀</strong><br>Si |t_calc| > t_crítico → Rechazar H₀</div>
+<h3>Tipos de prueba</h3>
+<table class="compact">
+<tr><th>H₁</th><th>Cola</th></tr>
+<tr><td>μ ≠ valor</td><td>Bilateral (α/2 en cada cola)</td></tr>
+<tr><td>μ < valor</td><td>Cola izquierda</td></tr>
+<tr><td>μ > valor</td><td>Cola derecha</td></tr>
+</table>
+</div>
+<div>
+<h3>Errores</h3>
+<table class="compact">
+<tr><th>Error</th><th>Qué pasa</th><th>Prob.</th></tr>
+<tr><td><strong>Tipo I</strong></td><td>Rechazas H₀ siendo verdadera</td><td>α</td></tr>
+<tr><td><strong>Tipo II</strong></td><td>No rechazas H₀ siendo falsa</td><td>β</td></tr>
+</table>
+<div class="formula">Potencia = 1 − β</div>
+<div class="alerta"><strong>Valores críticos Z:</strong> α=0.05 bilateral → ±1.96 | α=0.05 cola → ±1.645 | α=0.01 bilateral → ±2.576</div>
+</div>
+</div>
+
+<!-- ==================== SECCIÓN 5: PRUEBAS PARAMÉTRICAS ==================== -->
+<h2>5. PRUEBAS PARAMÉTRICAS — ¿Cuándo usar cada una?</h2>
+
+<table>
+<tr><th>Situación</th><th>Prueba</th><th>Estadístico</th><th>gl</th></tr>
+<tr><td>1 media, σ conocida</td><td><strong>Z</strong></td><td>Z = (x̄−μ₀)/(σ/√n)</td><td>—</td></tr>
+<tr><td>1 media, σ desconocida</td><td><strong>t de Student</strong></td><td>t = (x̄−μ₀)/(s/√n)</td><td>n−1</td></tr>
+<tr><td>2 medias indep., σ conocidas</td><td><strong>Z</strong></td><td>Z = (x̄₁−x̄₂)/√(σ₁²/n₁+σ₂²/n₂)</td><td>—</td></tr>
+<tr><td>2 medias indep., σ desc. (pooled)</td><td><strong>t</strong></td><td>t = (x̄₁−x̄₂)/√(sₚ²(1/n₁+1/n₂))</td><td>n₁+n₂−2</td></tr>
+<tr><td>2 medias indep., σ desc. (Welch)</td><td><strong>t</strong></td><td>gl ≈ fórmula de Welch</td><td>aprox.</td></tr>
+<tr><td>2 medias pareadas</td><td><strong>t pareada</strong></td><td>t = d̄/(s_d/√n)</td><td>n−1</td></tr>
+<tr><td>3+ medias</td><td><strong>ANOVA</strong></td><td>F = CM_entre/CM_dentro</td><td>k−1, N−k</td></tr>
+<tr><td>1 proporción</td><td><strong>Z proporción</strong></td><td>Z = (p̂−p₀)/√(p₀(1−p₀)/n)</td><td>—</td></tr>
+<tr><td>Relación 2 variables</td><td><strong>Regresión + Pearson</strong></td><td>ŷ = β̂₀ + β̂₁x</td><td>n−2</td></tr>
+</table>
+
+<h3>Intervalos de confianza</h3>
+<div class="col3">
+<div>
+<div class="formula">IC media (σ con.): x̄ ± Z·(σ/√n)</div>
+<div class="formula">IC media (σ desc.): x̄ ± t·(s/√n)</div>
+</div>
+<div>
+<div class="formula">IC proporción: p̂ ± Z·√(p̂(1−p̂)/n)</div>
+<div class="formula">IC σ²: [(n−1)s²/χ²_α/₂, (n−1)s²/χ²_₁₋α/₂]</div>
+</div>
+<div>
+<div class="formula">Varianza pooled: sₚ² = ((n₁−1)s₁²+(n₂−1)s₂²)/(n₁+n₂−2)</div>
+</div>
+</div>
+
+<!-- ==================== SECCIÓN 6: NO PARAMÉTRICAS ==================== -->
+<h2>6. PRUEBAS NO PARAMÉTRICAS — ¿Cuándo usar?</h2>
+
+<table>
+<tr><th>Situación</th><th>No paramétrica</th><th>Paramétrica equivalente</th></tr>
+<tr><td>1 muestra, mediana</td><td><strong>Wilcoxon (signos)</strong></td><td>t</td></tr>
+<tr><td>2 muestras pareadas</td><td><strong>Wilcoxon pareada</strong></td><td>t pareada</td></tr>
+<tr><td>2 muestras independientes</td><td><strong>Mann-Whitney U</strong></td><td>t independiente</td></tr>
+<tr><td>3+ muestras independientes</td><td><strong>Kruskal-Wallis</strong></td><td>ANOVA</td></tr>
+<tr><td>Bondad de ajuste</td><td><strong>Chi-cuadrado</strong></td><td>—</td></tr>
+<tr><td>Independencia 2 variables categ.</td><td><strong>Chi-cuadrado</strong></td><td>—</td></tr>
+</table>
+
+<div class="tip"><strong>¿Cuándo no paramétricas?</strong> Datos no normales, escalas ordinales, outliers, muestras muy pequeñas.</div>
+
+<!-- ==================== SECCIÓN 7: CHI-CUADRADO ==================== -->
+<div class="pagebreak"></div>
+<h2>7. CHI-CUADRADO (χ²) — Detalle completo</h2>
+
+<div class="col2">
+<div>
+<h3>Bondad de ajuste</h3>
+<div class="formula">χ² = Σ (Oᵢ − Eᵢ)² / Eᵢ</div>
+<div class="formula">gl = k − 1 (k = categorías)</div>
+<div class="tip"><strong>¿Cuándo?</strong> ¿Los datos siguen una distribución esperada?</div>
+<ul>
+<li>H₀: Los datos siguen la distribución D</li>
+<li>H₁: Los datos NO siguen la distribución D</li>
+<li>Eᵢ ≥ 5 en todas las celdas</li>
+</ul>
+</div>
+<div>
+<h3>Independencia</h3>
+<div class="formula">Eᵢⱼ = (fila_total · col_total) / gran_total</div>
+<div class="formula">χ² = Σ (Oᵢⱼ − Eᵢⱼ)² / Eᵢⱼ</div>
+<div class="formula">gl = (filas−1)·(columnas−1)</div>
+<div class="tip"><strong>¿Cuándo?</strong> ¿Dos variables categóricas son independientes?</div>
+<ul>
+<li>H₀: Las variables son independientes</li>
+<li>H₁: Las variables NO son independientes</li>
+</ul>
+</div>
+</div>
+
+<!-- ==================== SECCIÓN 8: REGRESIÓN ==================== -->
+<h2>8. REGRESIÓN LINEAL Y CORRELACIÓN</h2>
+
+<div class="col2">
+<div>
+<h3>Regresión lineal simple</h3>
+<div class="formula">ŷ = β̂₀ + β̂₁x</div>
+<div class="formula">β̂₁ = Σ(xᵢ−x̄)(yᵢ−ȳ) / Σ(xᵢ−x̄)²</div>
+<div class="formula">β̂₀ = ȳ − β̂₁·x̄</div>
+<h3>Coeficientes</h3>
+<div class="formula">r = Σ(xᵢ−x̄)(yᵢ−ȳ) / √[Σ(xᵢ−x̄)²·Σ(yᵢ−ȳ)²]</div>
+<div class="formula">R² = 1 − SC_res/SC_tot</div>
+<div class="formula">SC_tot = SC_reg + SC_res</div>
+<div class="formula">t = β̂₁/SE(β̂₁), gl = n−2</div>
+</div>
+<div>
+<h3>Interpretación de r</h3>
+<table class="compact">
+<tr><th>Valor de r</th><th>Interpretación</th></tr>
+<tr><td>r = 1</td><td>Positiva perfecta</td></tr>
+<tr><td>0.7 ≤ r < 1</td><td>Positiva fuerte</td></tr>
+<tr><td>0.3 ≤ r < 0.7</td><td>Positiva moderada</td></tr>
+<tr><td>0 ≤ r < 0.3</td><td>Positiva débil</td></tr>
+<tr><td>r = 0</td><td>Sin correlación</td></tr>
+</table>
+<h3>Supuestos MCO</h3>
+<ul>
+<li>Linealidad</li>
+<li>Independencia de residuos</li>
+<li>Homocedasticidad</li>
+<li>Normalidad de residuos</li>
+</ul>
+</div>
+</div>
+
+<!-- ==================== SECCIÓN 9: FLUJO DE DECISIÓN ==================== -->
+<h2>9. FLUJO DE DECISIÓN — ¿Qué prueba uso?</h2>
+
+<table>
+<tr><th style="width:30%">Pregunta clave</th><th style="width:35%">Prueba a usar</th><th style="width:35%">Fórmula principal</th></tr>
+<tr><td>¿1 media, σ conocida?</td><td>Z para media</td><td>Z = (x̄−μ)/(σ/√n)</td></tr>
+<tr><td>¿1 media, σ desconocida?</td><td>t de Student</td><td>t = (x̄−μ)/(s/√n)</td></tr>
+<tr><td>¿2 medias independientes?</td><td>t o Z (según σ)</td><td>Ver tabla sección 5</td></tr>
+<tr><td>¿2 medias pareadas?</td><td>t pareada</td><td>t = d̄/(s_d/√n)</td></tr>
+<tr><td>¿3+ medias?</td><td>ANOVA</td><td>F = CM_entre/CM_dentro</td></tr>
+<tr><td>¿1 proporción?</td><td>Z proporción</td><td>Z = (p̂−p₀)/√(p₀(1−p₀)/n)</td></tr>
+<tr><td>¿Relación entre 2 variables?</td><td>Regresión + Pearson</td><td>ŷ = β̂₀ + β̂₁x</td></tr>
+<tr><td>¿Los datos siguen una dist.?</td><td>χ² bondad de ajuste</td><td>χ² = Σ(O−E)²/E</td></tr>
+<tr><td>¿2 variables categ. independientes?</td><td>χ² independencia</td><td>χ² = Σ(O−E)²/E</td></tr>
+<tr><td>¿Comparar varianzas?</td><td>F de Fisher</td><td>F = s₁²/s₂²</td></tr>
+<tr><td>¿Inferir σ²?</td><td>χ² para varianza</td><td>χ² = (n−1)s²/σ²</td></tr>
+<tr><td>¿Prob. de causa dado efecto?</td><td>Bayes</td><td>P(B|A) = P(B)·P(A|B)/P(A)</td></tr>
+</table>
+
+<!-- ==================== SECCIÓN 10: VALORES CRÍTICOS ==================== -->
+<h2>10. VALORES CRÍTICOS COMUNES</h2>
+
+<div class="col3">
+<div>
+<h3>Z (Normal estándar)</h3>
+<table class="compact">
+<tr><th>α (bilateral)</th><th>Z</th></tr>
+<tr><td>0.10</td><td>1.645</td></tr>
+<tr><td>0.05</td><td>1.96</td></tr>
+<tr><td>0.01</td><td>2.576</td></tr>
+</table>
+<table class="compact">
+<tr><th>α (cola)</th><th>Z</th></tr>
+<tr><td>0.05</td><td>1.645</td></tr>
+<tr><td>0.025</td><td>1.96</td></tr>
+<tr><td>0.01</td><td>2.33</td></tr>
+</table>
+</div>
+<div>
+<h3>χ² (α = 0.05)</h3>
+<table class="compact">
+<tr><th>gl</th><th>χ²_crítico</th></tr>
+<tr><td>1</td><td>3.84</td></tr>
+<tr><td>2</td><td>5.99</td></tr>
+<tr><td>3</td><td>7.81</td></tr>
+<tr><td>4</td><td>9.49</td></tr>
+<tr><td>5</td><td>11.07</td></tr>
+<tr><td>10</td><td>18.31</td></tr>
+<tr><td>15</td><td>25.00</td></tr>
+</table>
+</div>
+<div>
+<h3>χ² (α = 0.01)</h3>
+<table class="compact">
+<tr><th>gl</th><th>χ²_crítico</th></tr>
+<tr><td>1</td><td>6.63</td></tr>
+<tr><td>2</td><td>9.21</td></tr>
+<tr><td>3</td><td>11.34</td></tr>
+<tr><td>4</td><td>13.28</td></tr>
+<tr><td>5</td><td>15.09</td></tr>
+<tr><td>10</td><td>23.21</td></tr>
+<tr><td>15</td><td>30.58</td></tr>
+</table>
+</div>
+</div>
+
+<!-- ==================== SECCIÓN 11: ERRORES COMUNES ==================== -->
+<h2>11. ERRORES COMUNES A EVITAR</h2>
+
+<div class="col2">
+<div>
+<div class="alerta"><strong>Chi-cuadrado:</strong> Olvidar elevar al cuadrado (O−E)². ¡Siempre al cuadrado!</div>
+<div class="alerta"><strong>Chi-cuadrado:</strong> Eᵢ < 5 en alguna celda → la prueba no es válida.</div>
+<div class="alerta"><strong>Hipótesis:</strong> H₀ SIEMPRE incluye igualdad (=, ≤, ≥).</div>
+<div class="alerta"><strong>t vs Z:</strong> σ conocida → Z; σ desconocida → t.</div>
+</div>
+<div>
+<div class="alerta"><strong>ANOVA:</strong> Solo dice "hay diferencia" pero no cuáles grupos. Usar post-hoc.</div>
+<div class="alerta"><strong>Regresión:</strong> R² siempre aumenta al agregar variables. Usar R² ajustado.</div>
+<div class="alerta"><strong>Correlación:</strong> r NO implica causalidad.</div>
+<div class="alerta"><strong>Proporción:</strong> Verificar n·p₀ ≥ 10 y n·(1−p₀) ≥ 10.</div>
+</div>
+</div>
+
+<div style="text-align:center; margin-top:15px; font-size:9px; color:#777;">
+Guía rápida de Estadística Inferencial — Generada para el examen
+</div>
+
+</body>
+</html>
